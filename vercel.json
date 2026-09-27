@@ -1,0 +1,15 @@
+{
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "languoduanju.psyverse.fun"
+        }
+      ],
+      "destination": "https://bluefruit.psyverse.fun/$1",
+      "permanent": true
+    }
+  ]
+}

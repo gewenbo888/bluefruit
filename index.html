@@ -4,16 +4,22 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>蓝果短剧 BlueFruit · AI 原生短剧厂牌</title>
+<!-- Domain Redirect for languoduanju.psyverse.fun -->
+<script>
+  if (window.location.hostname === 'languoduanju.psyverse.fun') {
+    window.location.replace('https://bluefruit.psyverse.fun' + window.location.pathname + window.location.search);
+  }
+</script>
 <!-- SEO · GEO -->
-<meta name="description" content="蓝果短剧：AI 原生短剧厂牌。专攻真人拍摄成本最高的四种类型——玄幻、科幻、规则怪谈、无限流。单集成本压到真人剧的 8%，一部真人剧的预算铺二十部。">
-<meta name="keywords" content="AI短剧, 短剧平台, 蓝果短剧, 玄幻短剧, 科幻短剧, 规则怪谈, 无限流, AI影视, 短剧制作">
+<meta name="description" content="蓝果短剧：AI 原生短剧厂牌。专攻真人拍摄成本最高、特效最密集的五大核心矩阵——玄幻、魔幻、科幻、奇幻、科普。12 节点 GPU 集群驱动，单集成本压到真人剧的 8%，一部真人剧的预算铺二十部。">
+<meta name="keywords" content="AI短剧, 短剧平台, 蓝果短剧, 玄幻短剧, 魔幻短剧, 科幻短剧, 奇幻短剧, 深度科普, AI影视, 12节点GPU, 短剧制作">
 <meta name="author" content="Gewenbo">
 <link rel="canonical" href="https://bluefruit.psyverse.fun/">
 <link rel="alternate" hreflang="en" href="https://bluefruit.psyverse.fun/">
 <link rel="alternate" hreflang="zh-CN" href="https://bluefruit.psyverse.fun/">
 <link rel="alternate" hreflang="x-default" href="https://bluefruit.psyverse.fun/">
 <meta property="og:title" content="蓝果短剧 BlueFruit · AI 原生短剧厂牌">
-<meta property="og:description" content="真人拍不起的世界，交给 AI。玄幻 · 科幻 · 规则怪谈 · 无限流，单集成本 ↓92%。">
+<meta property="og:description" content="真人拍不起的世界，交给 AI。玄幻 · 魔幻 · 科幻 · 奇幻 · 科普，12 节点 GPU 单集成本 ↓92%。">
 <meta property="og:url" content="https://bluefruit.psyverse.fun/">
 <meta property="og:site_name" content="Psyverse">
 <meta property="og:type" content="website">
@@ -133,7 +139,7 @@ section{padding:88px 0}
 .law::before{content:'※'}
 
 /* genre cards */
-.ggrid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.ggrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
 @media(max-width:980px){.ggrid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:560px){.ggrid{grid-template-columns:1fr}}
 .gcard{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:26px 22px 22px;overflow:hidden;transition:border-color .3s,transform .3s}
@@ -263,8 +269,8 @@ footer{border-top:1px solid var(--line);padding:44px 0 60px;color:var(--muted);f
     <div>
       <div class="kicker">BlueFruit Studio · 概念厂牌</div>
       <h1>真人拍不起的<br>世界，交给 <em>AI</em>。</h1>
-      <p class="hero-sub">蓝果短剧，AI 原生短剧厂牌。专攻真人拍摄成本最高的四种类型——<b>玄幻 · 科幻 · 规则怪谈 · 无限流</b>。场景、异兽、末世与副本，全部生成，不搭一座景。</p>
-      <div class="hero-quote">因为人类的日常生活非常沉闷，所以需要科幻、奇幻、魔幻、玄幻。<span class="q-sub">—— 用一部真人剧的预算，铺二十部 AI 剧。</span></div>
+      <p class="hero-sub">蓝果短剧，AI 原生短剧厂牌。专攻真人拍摄成本最高、特效最密集的五大核心矩阵——<b>玄幻 · 魔幻 · 科幻 · 奇幻 · 科普</b>。异兽结界、西方魔幻、深空宇宙、奇幻副本与硬核科学解密，12 节点 GPU 集群全流程生成，不搭一座景。</p>
+      <div class="hero-quote">因为人类的日常生活非常沉闷，所以需要科幻、奇幻、魔幻、玄幻与终极科学探索。<span class="q-sub">—— 用一部真人剧的预算，铺二十部 AI 剧。</span></div>
       <div class="stats">
         <div class="stat"><b>12<i> 节点</i></b><span>分布式 GPU 矩阵 · 7x24h 算力集群</span></div>
         <div class="stat"><b>↓92<i>%</i></b><span>单集成本 · 对比真人玄幻</span></div>
@@ -282,33 +288,39 @@ footer{border-top:1px solid var(--line);padding:44px 0 60px;color:var(--muted);f
 <!-- 01 GENRES -->
 <section id="genres">
   <div class="wrap">
-    <div class="sec-head rv"><span class="sec-num">01</span><h2>为什么是这四种类型</h2><span class="sec-en">The Slate</span></div>
+    <div class="sec-head rv"><span class="sec-num">01</span><h2>为什么是这五大类型</h2><span class="sec-en">Five Core Genres</span></div>
     <p class="sec-sub rv">选类型不看情怀，看比较优势：真人拍它贵在哪，AI 替它省在哪。<br>
-    <span class="law">选片铁律：世界观驱动，回避强情绪特写——AI 的弱项，不进片单。</span></p>
+    <span class="law">选片铁律：宏大世界观与科学震撼驱动，回避冗长低效肉身摄制——AI 绝对主场。</span></p>
     <div class="ggrid">
       <div class="gcard rv" style="--gc:#ffb454">
         <svg class="glyph" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 36l8-14 6 9 5-7 13 12z" stroke-linejoin="round"/><circle cx="31" cy="13" r="5"/><path d="M31 4v2M39 13h2M36.5 7.5l1.5-1.5"/></svg>
-        <h3>玄幻</h3><div class="gen">Fantasy</div>
-        <p>法术、异兽、上古结界——靠后期一帧帧烧钱的画面，AI 直接生成。实景做不到的奇观，正是提示词的日常。</p>
+        <h3>玄幻</h3><div class="gen">Eastern Fantasy</div>
+        <p>法术、异兽、修仙炼道、上古结界——靠后期一帧帧烧钱的东方神话奇观，AI 直接生成，将实景无法搭建的浩瀚化为提示词的日常。</p>
         <div class="cost"><s>真人 ¥8–15万 / 集</s> → 蓝果 <b>¥0.5万 / 集</b></div>
+      </div>
+      <div class="gcard rv" style="--gc:#c084fc">
+        <svg class="glyph" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 8l10 24 10-24M8 18h28M15 32h14" stroke-linecap="round" stroke-linejoin="round"/><circle cx="22" cy="8" r="3"/></svg>
+        <h3>魔幻</h3><div class="gen">Dark Magic & Sorcery</div>
+        <p>巫师秘境、恶魔低语、中世纪魔法史诗对决。高昂的特效服装与魔法粒子风暴，在 12 节点 GPU 算力下一键完成次世代渲染。</p>
+        <div class="cost"><s>真人 ¥12–25万 / 集</s> → 蓝果 <b>¥0.6万 / 集</b></div>
       </div>
       <div class="gcard rv" style="--gc:#6ea8ff">
         <svg class="glyph" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="22" cy="24" r="9"/><path d="M22 6v6M22 32v6M4 24h6M34 24h6" stroke-linecap="round"/><ellipse cx="22" cy="24" rx="17" ry="5" transform="rotate(-18 22 24)"/></svg>
-        <h3>科幻</h3><div class="gen">Sci-Fi</div>
-        <p>太空站、末世废土、赛博都市——美术置景预算的黑洞。搭不起的景，在生成模型里就是一句描述。</p>
+        <h3>科幻</h3><div class="gen">Hard Sci-Fi</div>
+        <p>深空母舰、末世废土、赛博都市——传统影视置景预算的无底黑洞。搭不起的未来视界，在生成模型里就是一句精确的结构化描述。</p>
         <div class="cost"><s>真人 ¥10–20万 / 集</s> → 蓝果 <b>¥0.6万 / 集</b></div>
       </div>
       <div class="gcard rv" style="--gc:#ff5c7a">
         <svg class="glyph" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="8" y="5" width="28" height="34" rx="2"/><path d="M13 13h18M13 19h18M13 25h11" stroke-linecap="round"/><path d="M16 33l12-8" stroke-linecap="round" stroke="#ff5c7a"/></svg>
-        <h3>规则怪谈</h3><div class="gen">Rule Horror</div>
-        <p>恐怖靠氛围，不靠脸。走廊、旧楼、贴满规则的墙——把日常场景怪谈化，正是生成模型的主场。</p>
-        <div class="cost"><s>真人 ¥5–8万 / 集</s> → 蓝果 <b>¥0.4万 / 集</b></div>
-      </div>
-      <div class="gcard rv" style="--gc:#a78bfa">
-        <svg class="glyph" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="22" cy="22" r="6"/><circle cx="22" cy="22" r="12" stroke-dasharray="4 5"/><circle cx="22" cy="22" r="17"/><path d="M39 22a17 17 0 0 0-4-11" stroke-linecap="round"/><path d="M35 7v4h4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <h3>无限流</h3><div class="gen">Loop / Instance</div>
-        <p>副本世界每集一换：雪国、孤岛、倒悬城市。真人剧换一个副本就是换一套置景组，蓝果换的是提示词。</p>
+        <h3>奇幻</h3><div class="gen">High Fantasy & Myth</div>
+        <p>异世界冒险、神秘规则副本、不可思议之境。超越现实的无边界脑洞，真人剧换场景等于换班底，蓝果换的是提示词与首尾帧。</p>
         <div class="cost"><s>真人 ¥8–12万 / 集</s> → 蓝果 <b>¥0.5万 / 集</b></div>
+      </div>
+      <div class="gcard rv" style="--gc:#10b981">
+        <svg class="glyph" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="22" cy="22" r="14"/><path d="M22 8v28M8 22h28M12 12l20 20M32 12L12 32" stroke-linecap="round"/></svg>
+        <h3>科普</h3><div class="gen">Science & Deep Tech</div>
+        <p>宇宙大爆炸、微观量子纠缠、硬核物理与前沿技术解密。真人摄影机根本无法抵达的宏观时空与微观粒子，AI 动态运镜秒级精准呈现。</p>
+        <div class="cost"><s>专业纪录片 ¥15–30万 / 集</s> → 蓝果 <b>¥0.4万 / 集</b></div>
       </div>
     </div>
   </div>
