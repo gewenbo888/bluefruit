@@ -212,6 +212,25 @@ footer{border-top:1px solid var(--line);padding:44px 0 60px;color:var(--muted);f
 .eps-more{font-family:var(--mono);font-size:11px;color:#5a6478;padding:8px 10px}
 @media(max-width:720px){.modal-box{grid-template-columns:1fr}.modal-poster{min-height:230px;max-height:230px}}
 
+/* gpu fleet */
+.gpu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin:28px 0 36px}
+.gpu-card{background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:24px 20px;position:relative;transition:border-color .3s,transform .3s}
+.gpu-card:hover{border-color:var(--blue);transform:translateY(-2px)}
+.gpu-badge{font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;color:var(--blue);margin-bottom:8px;font-weight:700}
+.gpu-card h3{font-family:'Noto Serif SC',serif;font-size:17px;margin-bottom:8px}
+.gpu-card p{font-size:12.8px;color:var(--muted);line-height:1.6;margin-bottom:14px}
+.gpu-tag{font-family:var(--mono);font-size:11px;color:var(--amber);background:rgba(255,180,84,.08);padding:4px 8px;border-radius:4px;display:inline-block}
+
+.loop-banner{background:linear-gradient(135deg,rgba(110,168,255,.08) 0%,rgba(16,185,129,.06) 100%);border:1px solid rgba(110,168,255,.3);border-radius:14px;padding:28px 26px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+.loop-text{flex:1;min-width:280px}
+.loop-text h3{font-family:'Noto Serif SC',serif;font-size:18px;color:var(--text);margin-bottom:8px}
+.loop-text p{font-size:13.5px;color:var(--muted);line-height:1.65}
+.loop-actions{display:flex;gap:12px;flex-wrap:wrap}
+.btn-primary{background:linear-gradient(135deg,#6ea8ff,#4378ff);color:#060a14;font-weight:700;font-size:13px;padding:10px 18px;border-radius:8px;text-decoration:none;transition:.2s;display:inline-flex;align-items:center}
+.btn-primary:hover{box-shadow:0 0 16px rgba(110,168,255,.5);color:#060a14}
+.btn-secondary{background:rgba(255,255,255,.05);border:1px solid var(--line);color:var(--text);font-size:13px;padding:10px 18px;border-radius:8px;text-decoration:none;transition:.2s;display:inline-flex;align-items:center}
+.btn-secondary:hover{border-color:var(--blue);color:var(--blue)}
+
 /* reveal */
 .rv{opacity:0;transform:translateY(26px);transition:opacity .7s,transform .7s}
 .rv.on{opacity:1;transform:none}
@@ -231,7 +250,7 @@ footer{border-top:1px solid var(--line);padding:44px 0 60px;color:var(--muted);f
       蓝果短剧 <small>AI-NATIVE&nbsp;STUDIO</small>
     </a>
     <nav>
-      <a href="#genres">类型</a><a href="#library">片库</a><a href="#pipeline">制作管线</a><a href="#cost">成本</a><a href="https://psyverse.fun">Psyverse ↗</a>
+      <a href="#genres">类型</a><a href="#library">片库</a><a href="#pipeline">制作管线</a><a href="#gpu-fleet">12节点GPU</a><a href="#cost">成本</a><a href="https://ai-for-money.psyverse.fun" target="_blank">搞钱平台 ↗</a><a href="https://psyverse.fun/payment" target="_blank">统一收银 ↗</a>
     </nav>
   </div>
 </header>
@@ -247,10 +266,10 @@ footer{border-top:1px solid var(--line);padding:44px 0 60px;color:var(--muted);f
       <p class="hero-sub">蓝果短剧，AI 原生短剧厂牌。专攻真人拍摄成本最高的四种类型——<b>玄幻 · 科幻 · 规则怪谈 · 无限流</b>。场景、异兽、末世与副本，全部生成，不搭一座景。</p>
       <div class="hero-quote">因为人类的日常生活非常沉闷，所以需要科幻、奇幻、魔幻、玄幻。<span class="q-sub">—— 用一部真人剧的预算，铺二十部 AI 剧。</span></div>
       <div class="stats">
+        <div class="stat"><b>12<i> 节点</i></b><span>分布式 GPU 矩阵 · 7x24h 算力集群</span></div>
         <div class="stat"><b>↓92<i>%</i></b><span>单集成本 · 对比真人玄幻</span></div>
         <div class="stat"><b>7<i> 天</i></b><span>一部剧 · 从剧本到上线</span></div>
-        <div class="stat"><b>8<i> 部</i></b><span>在播 · 465 集片库</span></div>
-        <div class="stat"><b>2<i> 集</i></b><span>日更节奏 · 数据回流选品</span></div>
+        <div class="stat"><b>465<i> 集</i></b><span>12 部片库 · 多语言出海</span></div>
       </div>
     </div>
     <div class="fan" id="fan"><div class="fan-glow"></div></div>
@@ -307,14 +326,14 @@ footer{border-top:1px solid var(--line);padding:44px 0 60px;color:var(--muted);f
 <!-- 03 PIPELINE -->
 <section id="pipeline">
   <div class="wrap">
-    <div class="sec-head rv"><span class="sec-num">03</span><h2>制作管线</h2><span class="sec-en">7 Days / Title</span></div>
-    <p class="sec-sub rv">五道工序，一部 60 集的剧七天走完。人负责世界观与节奏，模型负责画面与量产。</p>
+    <div class="sec-head rv"><span class="sec-num">03</span><h2>制作管线</h2><span class="sec-en">7 Days / Title · 12-GPU Parallelism</span></div>
+    <p class="sec-sub rv">五道工序，一部 60 集的剧七天走完。人负责世界观与节奏，12 节点 GPU 负责全流程量产与多语言出海。</p>
     <div class="pipe rv">
-      <div class="step"><div class="n">STEP 1</div><h3>剧本工坊</h3><div class="tool">LLM · 世界观圣经</div><p>世界观设定一次写死，每集 90 秒一个钩子，第三秒必须出事。</p><span class="day">2 天 / 部</span></div>
-      <div class="step"><div class="n">STEP 2</div><h3>分镜生成</h3><div class="tool">文生图 · 风格锁定</div><p>每集 12–18 镜。角色一致性库钉死面孔与服装，画风全局锁定。</p><span class="day">1 天 / 部</span></div>
-      <div class="step"><div class="n">STEP 3</div><h3>视频生成</h3><div class="tool">首尾帧驱动 · 图生视频</div><p>分镜稿作首帧，模型补运动。远景与氛围镜头全自动，近景人工筛。</p><span class="day">3 天 / 部</span></div>
-      <div class="step"><div class="n">STEP 4</div><h3>剪辑合成</h3><div class="tool">自动粗剪 + 人工精剪</div><p>节奏卡点、字幕、音效自动套版，人工只掐情绪转折的帧。</p><span class="day">1 天 / 部</span></div>
-      <div class="step"><div class="n">STEP 5</div><h3>上线分发</h3><div class="tool">全平台 · 日更 2 集</div><p>完播率回流选品：哪类世界观涨得快，下一部就开哪个坑。</p><span class="day">持续</span></div>
+      <div class="step"><div class="n">STEP 1</div><h3>剧本工坊</h3><div class="tool">LLM · 黄金三秒与情绪卡点</div><p>世界观设定一次写死，融入火山派爽文公式：第3秒立冲突，第45秒高潮打脸，集尾留悬念。</p><span class="day">2 天 / 部</span></div>
+      <div class="step"><div class="n">STEP 2</div><h3>分镜生成</h3><div class="tool">12节点并发 · 角色DNA钉死</div><p>每集 12–18 镜。12 组 GPU 并发文生图，角色一致性库钉死面孔与服装，画风全局锁定。</p><span class="day">1 天 / 部</span></div>
+      <div class="step"><div class="n">STEP 3</div><h3>视频生成</h3><div class="tool">首尾帧驱动 · 图生视频</div><p>分镜稿作首帧，模型补物理运动。远景与异兽氛围镜头全自动，近景人工筛选。</p><span class="day">2 天 / 部</span></div>
+      <div class="step"><div class="n">STEP 4</div><h3>配音与出海</h3><div class="tool">Voicebox 克隆 + Whisper 多语言</div><p>提取情绪声音克隆配音，Whisper 自动翻译生成英/西/印尼多语言字幕，打通出海剪刀差。</p><span class="day">1 天 / 部</span></div>
+      <div class="step"><div class="n">STEP 5</div><h3>矩阵收银</h3><div class="tool">9大平台分发 + 链上/法币秒结</div><p>公域挂载蓝果入口与完播数据回流。前5集免费引流，第6集扫码自贩机解锁，0%平台抽成。</p><span class="day">持续</span></div>
     </div>
   </div>
 </section>
@@ -335,6 +354,52 @@ footer{border-top:1px solid var(--line);padding:44px 0 60px;color:var(--muted);f
         <span class="big">20 : 1</span>
         <p>同样一笔预算，真人剧组拍一部赌一部；蓝果铺二十部同批上线，用数据淘汰，用数据加更。</p>
         <p>爆款短剧是概率游戏——赔率不变时，唯一能赢的策略是增加抽卡次数。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 GPU FLEET & MONETIZATION -->
+<section id="gpu-fleet" style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="sec-num">05</span><h2>12 节点分布式 GPU 算力集群与出海闭环</h2><span class="sec-en">12-Node GPU Cluster & Cashflow Loop</span></div>
+    <p class="sec-sub rv">一人工业不是概念，是 12 组独立高配 GPU 账号的全天候集群咆哮。结合火山哥实战套利打法，打通从公域爆款切片到独立数字收银的完整闭环。</p>
+    
+    <div class="gpu-grid rv">
+      <div class="gpu-card">
+        <div class="gpu-badge">NODE 01 – 04</div>
+        <h3>文生图与角色 DNA 矩阵</h3>
+        <p>专职高分辨率文生图与角色一致性 LoRA 推理。将主角面孔、服装材质与场景光影特征牢牢锁定在提示词权重中，彻底解决 AI 视频"跳脸"通病。</p>
+        <div class="gpu-tag">Flux · SDXL · 角色一致性库</div>
+      </div>
+      <div class="gpu-card">
+        <div class="gpu-badge">NODE 05 – 08</div>
+        <h3>图生视频与首尾帧物理运镜</h3>
+        <p>接收分镜图片，并发执行图生视频推理。通过摄影机轨道控制、光流插帧与动力学模拟，生成玄幻结界、太空裂隙等好莱坞级超大场面动效。</p>
+        <div class="gpu-tag">可灵 Kling · 首尾帧补间 · 2.5D运镜</div>
+      </div>
+      <div class="gpu-card">
+        <div class="gpu-badge">NODE 09 – 10</div>
+        <h3>情绪声音克隆与多语言出海</h3>
+        <p>采用 Voicebox 原生声音克隆技术，复刻极致情绪张力的台词配音。配合 Whisper 自动提取时间戳并翻译为英文、西语、印尼语，跨国降维出海收割美金分成。</p>
+        <div class="gpu-tag">Voicebox · Whisper · 多语言字幕</div>
+      </div>
+      <div class="gpu-card">
+        <div class="gpu-badge">NODE 11 – 12</div>
+        <h3>自动化粗剪卡点与全网分发</h3>
+        <p>FFmpeg 确定性批处理流水线：自动音画对齐、动态字幕压制、防搬运画中画混剪。一键分发至全网 9 大平台，并自动挂载蓝果短剧独立收银入口。</p>
+        <div class="gpu-tag">FFmpeg 自动卡点 · 9大矩阵 · 自动发布</div>
+      </div>
+    </div>
+
+    <div class="loop-banner rv">
+      <div class="loop-text">
+        <h3>💰 现实主权收银：公域爆款引流 ➔ 独立自贩机 0% 平台抽成直达个人钱包</h3>
+        <p>融合火山哥“以终为始、闭环变现”逻辑：公域短视频平台发布前 5 集高燃剧情与 45 秒悬念切片；高潮卡点引导观众进入蓝果独立站，微信扫码、支付宝或 Base 链上 (USDC / gewenbo.eth) 1 元解锁单集、19.9 元买断整季，彻底摆脱传统短剧平台 80% 的高额抽成与苛刻账期。</p>
+      </div>
+      <div class="loop-actions">
+        <a href="https://ai-for-money.psyverse.fun" target="_blank" class="btn-primary">进入 AI for Money 搞钱大屏 ↗</a>
+        <a href="https://psyverse.fun/payment" target="_blank" class="btn-secondary">查看统一收银中枢 ↗</a>
       </div>
     </div>
   </div>
