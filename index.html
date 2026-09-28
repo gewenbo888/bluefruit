@@ -237,6 +237,32 @@ footer{border-top:1px solid var(--line);padding:44px 0 60px;color:var(--muted);f
 .btn-secondary{background:rgba(255,255,255,.05);border:1px solid var(--line);color:var(--text);font-size:13px;padding:10px 18px;border-radius:8px;text-decoration:none;transition:.2s;display:inline-flex;align-items:center}
 .btn-secondary:hover{border-color:var(--blue);color:var(--blue)}
 
+/* fleet console */
+.fleet-console{background:linear-gradient(180deg,#0a0f1d,#070a14);border:1px solid rgba(110,168,255,.3);border-radius:14px;padding:28px;margin:28px 0 36px;box-shadow:0 12px 36px rgba(0,0,0,.4)}
+.fc-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:14px}
+.fc-title{font-family:'Noto Serif SC',serif;font-size:18px;display:flex;align-items:center;gap:10px}
+.fc-status{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;color:#10b981;background:rgba(16,185,129,.1);padding:4px 10px;border-radius:20px;border:1px solid rgba(16,185,129,.3)}
+.fc-dot{width:7px;height:7px;border-radius:50%;background:#10b981;box-shadow:0 0 8px #10b981;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.genre-selector{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.g-btn{background:rgba(255,255,255,.04);border:1px solid var(--line);color:var(--muted);font-size:12.5px;padding:7px 14px;border-radius:8px;cursor:pointer;transition:.2s;display:flex;align-items:center;gap:6px}
+.g-btn:hover,.g-btn.active{border-color:var(--blue);color:var(--text);background:rgba(110,168,255,.12)}
+.g-btn.active{color:var(--blue);font-weight:700}
+.nodes-display{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px;margin-bottom:22px}
+.node-chip{background:rgba(15,23,42,.6);border:1px solid rgba(255,255,255,.06);border-radius:6px;padding:8px 6px;text-align:center;font-family:var(--mono);font-size:10.5px;transition:.25s}
+.node-chip.busy{border-color:var(--blue);background:rgba(110,168,255,.15);box-shadow:0 0 10px rgba(110,168,255,.2)}
+.node-chip.done{border-color:#10b981;background:rgba(16,185,129,.1)}
+.node-id{font-weight:700;color:var(--text);margin-bottom:2px}
+.node-role{font-size:9.5px;color:var(--muted)}
+.terminal-window{background:#04060c;border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:16px;font-family:var(--mono);font-size:12px;line-height:1.7;color:#94a3b8;max-height:260px;overflow-y:auto}
+.term-line{margin-bottom:4px}
+.term-line.highlight{color:var(--blue)}
+.term-line.success{color:#10b981}
+.term-line.accent{color:var(--amber)}
+.fc-actions{display:flex;justify-content:space-between;align-items:center;margin-top:16px;gap:12px;flex-wrap:wrap}
+.run-dispatch-btn{background:linear-gradient(135deg,#10b981,#059669);color:#fff;font-weight:700;font-size:13px;padding:9px 18px;border-radius:8px;border:none;cursor:pointer;transition:.2s;display:inline-flex;align-items:center;gap:6px}
+.run-dispatch-btn:hover{box-shadow:0 0 16px rgba(16,185,129,.4)}
+
 /* reveal */
 .rv{opacity:0;transform:translateY(26px);transition:opacity .7s,transform .7s}
 .rv.on{opacity:1;transform:none}
@@ -401,6 +427,43 @@ footer{border-top:1px solid var(--line);padding:44px 0 60px;color:var(--muted);f
         <h3>自动化粗剪卡点与全网分发</h3>
         <p>FFmpeg 确定性批处理流水线：自动音画对齐、动态字幕压制、防搬运画中画混剪。一键分发至全网 9 大平台，并自动挂载蓝果短剧独立收银入口。</p>
         <div class="gpu-tag">FFmpeg 自动卡点 · 9大矩阵 · 自动发布</div>
+      </div>
+    </div>
+
+    <!-- 12 节点实时集群调度交互控制台 -->
+    <div class="fleet-console rv" id="fleet-console">
+      <div class="fc-header">
+        <div class="fc-title">
+          <span>⚡ 12 节点 GPU 实时集群调度控制台 (Live Orchestrator)</span>
+        </div>
+        <div class="fc-status">
+          <span class="fc-dot"></span>
+          <span>12/12 节点全联通 · 576 GB VRAM · 56 并行槽位</span>
+        </div>
+      </div>
+
+      <div class="genre-selector" id="genre-btns">
+        <button class="g-btn active" data-genre="xuanhuan">🔮 玄幻 · Eastern Fantasy</button>
+        <button class="g-btn" data-genre="mofa">⚡ 魔幻 · Dark Magic</button>
+        <button class="g-btn" data-genre="scifi">🚀 科幻 · Hard Sci-Fi</button>
+        <button class="g-btn" data-genre="qihuan">🐉 奇幻 · High Fantasy</button>
+        <button class="g-btn" data-genre="kepu">⚛️ 科普 · Deep Science</button>
+      </div>
+
+      <div class="nodes-display" id="nodes-display">
+        <!-- 12 Nodes dynamically rendered -->
+      </div>
+
+      <div class="terminal-window" id="term-window">
+        <div class="term-line highlight">[CLUSTER_READY] 12-GPU Cluster initialized. Topology: 4x DNA/Flux, 4x Kling Video, 2x Voicebox, 2x FFmpeg.</div>
+        <div class="term-line">[INFO] 当前选定题材：玄幻 (Eastern Fantasy) · 点击下方按钮触发分布式实时算力调度与4幕分镜生成。</div>
+      </div>
+
+      <div class="fc-actions">
+        <button class="run-dispatch-btn" id="run-dispatch-btn">
+          <span>▶ 现场生成该题材分镜与调度指令</span>
+        </button>
+        <span style="font-family:var(--mono);font-size:11px;color:var(--muted)">SOP: 黄金3秒立冲突 ➔ 45秒情绪卡点 ➔ 第6集扫码解锁闭环</span>
       </div>
     </div>
 
@@ -631,6 +694,131 @@ document.querySelectorAll('.bar-row').forEach(r => {
   }), { threshold:.4 });
   o.observe(r);
 });
+/* ---------- 12-GPU Fleet Console Logic ---------- */
+const FLEET_NODES = [
+  { id: 'GPU-01', role: '角色DNA', engine: 'Flux Dev' },
+  { id: 'GPU-02', role: '分镜原画', engine: 'SDXL Lightning' },
+  { id: 'GPU-03', role: '环境概念', engine: 'Flux Pro' },
+  { id: 'GPU-04', role: '8K超分', engine: 'SUPIR Refine' },
+  { id: 'GPU-05', role: '图生视频A', engine: 'Kling 1.5 HD' },
+  { id: 'GPU-06', role: '图生视频B', engine: 'Runway Gen-3' },
+  { id: 'GPU-07', role: '物理动力学', engine: 'CogVideoX' },
+  { id: 'GPU-08', role: '60FPS插帧', engine: 'RIFE 4.6' },
+  { id: 'GPU-09', role: '声音克隆', engine: 'CosyVoice' },
+  { id: 'GPU-10', role: '音频对齐', engine: 'Whisper V3' },
+  { id: 'GPU-11', role: 'FFmpeg压制', engine: 'NVENC Pipeline' },
+  { id: 'GPU-12', role: '全网分发', engine: '9-Platform Hub' }
+];
+
+const GENRE_STORIES = {
+  xuanhuan: {
+    title: '《万劫不灭道》',
+    hook: '前三秒开局：引仙令碎裂，万道雷劫撕裂青云宗山门！',
+    tension: '第15秒铺垫：主角以凡躯硬抗化神雷劫，体内太古凶兽骨文逐一觉醒。',
+    climax: '第45秒情绪点：九大仙门老祖合围，主角身后浮现混沌青莲，一剑荡灭因果！',
+    cliffhanger: '第58秒悬念：苍穹裂开魔皇眼眸，宣判灭界之灾。第6集扫码继续看！'
+  },
+  mofa: {
+    title: '《死灵法典：第七深渊》',
+    hook: '前三秒开局：教廷审判庭前，火刑架上的灰烬突然逆流重组成巫妖真身！',
+    tension: '第15秒铺垫：黑曜石法阵泛起幽冥绿芒，整座王都守卫的佩剑瞬间锈蚀崩解。',
+    climax: '第45秒情绪点：十万亡灵骨潮踏平圣城圣水池，主角戴上极夜巫妖王冠！',
+    cliffhanger: '第58秒悬念：地下深渊传来万丈古神心脏跳动声……下集揭秘深渊契约！'
+  },
+  scifi: {
+    title: '《戴森球工程：寂静纪元》',
+    hook: '前三秒开局：太阳突然熄灭了三秒，引力透镜警报撕裂地下蜂巢城！',
+    tension: '第15秒铺垫：第三深空编队遭遇暗物质湍流，引力索断裂，主舰偏航进入视界边缘。',
+    climax: '第45秒情绪点：行星推进器喷射出万里蓝焰，整颗地球擦着黑洞引力弹弓掠过！',
+    cliffhanger: '第58秒悬念：量子雷达侦测到虚空中排列出长达 30 光年的硅基戴森阵列……'
+  },
+  qihuan: {
+    title: '《星界龙契：最后的守望者》',
+    hook: '前三秒开局：万丈悬崖边缘，濒死的极地冰龙将龙晶强行融入少年胸口！',
+    tension: '第15秒铺垫：十二道古精灵遗迹石柱逐一点亮，失落三千年的星界传送门开始共鸣。',
+    climax: '第45秒情绪点：龙翼遮蔽双月，黄金龙炎将整座黑暗要塞熔成琉璃熔浆！',
+    cliffhanger: '第58秒悬念：龙骨王座下传来深沉龙吟，真正的灭世黑龙睁开了猩红竖瞳……'
+  },
+  kepu: {
+    title: '《量子纠缠与时间倒流：终极物理图景》',
+    hook: '前三秒开局：如果现在太阳瞬间消失，你真的会在 8 分 20 秒后才感知到吗？',
+    tension: '第15秒铺垫：相对论的光速限制与量子力学的瞬时纠缠，百年争论在实验室被击穿。',
+    climax: '第45秒情绪点：通过双缝干涉延迟选择实验，证明了当下的观测正在重写过去的路径！',
+    cliffhanger: '第58秒悬念：暗能量加速撕裂星系，宇宙最终的大撕裂究竟何时降临？'
+  }
+};
+
+const ndEl = document.getElementById('nodes-display');
+const twEl = document.getElementById('term-window');
+let currentGenre = 'xuanhuan';
+
+if(ndEl){
+  ndEl.innerHTML = FLEET_NODES.map(n => `
+    <div class="node-chip" id="chip-${n.id}">
+      <div class="node-id">${n.id}</div>
+      <div class="node-role">${n.role}</div>
+    </div>
+  `).join('');
+}
+
+document.querySelectorAll('#genre-btns .g-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('#genre-btns .g-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentGenre = btn.dataset.genre;
+    const gName = btn.textContent.trim();
+    twEl.innerHTML += `<div class="term-line highlight">[SWITCH] 题材已切换为：${gName}</div>`;
+    twEl.scrollTop = twEl.scrollHeight;
+  });
+});
+
+const dispatchBtn = document.getElementById('run-dispatch-btn');
+if(dispatchBtn){
+  dispatchBtn.addEventListener('click', () => {
+    dispatchBtn.disabled = true;
+    dispatchBtn.innerHTML = '<span>⚡ 12 节点 GPU 满载计算中...</span>';
+    
+    // Clear chips
+    document.querySelectorAll('.node-chip').forEach(c => {
+      c.className = 'node-chip busy';
+    });
+
+    const story = GENRE_STORIES[currentGenre];
+    twEl.innerHTML = `<div class="term-line highlight">[JOB_DISPATCH] 正在为 ${story.title} 分配 12 节点 GPU 算力集群...</div>`;
+
+    setTimeout(() => {
+      twEl.innerHTML += `<div class="term-line accent">➔ [STAGE 1 · GPU 01-04] 角色DNA特征向量锁定完成，4组高保真原画生成完毕。</div>`;
+      twEl.innerHTML += `<div class="term-line">   • 镜头 1 (0-3s 开局立冲突): ${story.hook}</div>`;
+      twEl.scrollTop = twEl.scrollHeight;
+    }, 600);
+
+    setTimeout(() => {
+      twEl.innerHTML += `<div class="term-line accent">➔ [STAGE 2 · GPU 05-08] 可灵 Kling 首尾帧图生视频运镜模拟完成，RIFE 60FPS 运动平滑就绪。</div>`;
+      twEl.innerHTML += `<div class="term-line">   • 镜头 2 (4-20s 叙事升级): ${story.tension}</div>`;
+      twEl.scrollTop = twEl.scrollHeight;
+    }, 1300);
+
+    setTimeout(() => {
+      twEl.innerHTML += `<div class="term-line accent">➔ [STAGE 3 · GPU 09-10] CosyVoice 情绪声音克隆就绪，Whisper 字级时间戳完成 (中/英/西/日 4语)。</div>`;
+      twEl.innerHTML += `<div class="term-line">   • 镜头 3 (21-50s 情绪高潮): ${story.climax}</div>`;
+      twEl.scrollTop = twEl.scrollHeight;
+    }, 2000);
+
+    setTimeout(() => {
+      twEl.innerHTML += `<div class="term-line accent">➔ [STAGE 4 · GPU 11-12] NVENC 硬件压制 9:16 竖屏 MP4，挂载微信/Base链上自贩机收银钩子。</div>`;
+      twEl.innerHTML += `<div class="term-line">   • 镜头 4 (51-60s 绝望卡点): ${story.cliffhanger}</div>`;
+      twEl.innerHTML += `<div class="term-line success">✔ [SUCCESS] 第 1 集全流程耗时 2.4s (模拟) 渲染完成，一键分发至全网 9 大平台！</div>`;
+      
+      document.querySelectorAll('.node-chip').forEach(c => {
+        c.className = 'node-chip done';
+      });
+      
+      dispatchBtn.disabled = false;
+      dispatchBtn.innerHTML = '<span>▶ 再次调度生成新分镜</span>';
+      twEl.scrollTop = twEl.scrollHeight;
+    }, 2700);
+  });
+}
 </script>
 </body>
 </html>

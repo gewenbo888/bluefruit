@@ -1,0 +1,557 @@
+[
+  {
+    "episode_id": "BF-XUANHUAN-cd723701",
+    "title": "万劫不灭道",
+    "genre": "玄幻 (Eastern Fantasy)",
+    "episode_number": 1,
+    "total_duration_sec": 59.0,
+    "storyboards": [
+      {
+        "shot": 1,
+        "name": "00-03s 黄金3秒立冲突",
+        "duration_sec": 3.0,
+        "visual_prompt": "Dramatic cinematic opening, 国风奇幻、水墨金芒、粒子光晕、宏大仙山结界、体积雾, 前三秒开局：引仙令碎裂，万道雷劫撕裂青云宗山门！",
+        "audio_cue": "开场重击雷音/骤停，立竿见影抓取完播率",
+        "assigned_gpus": [
+          "gpu-node-01",
+          "gpu-node-05"
+        ]
+      },
+      {
+        "shot": 2,
+        "name": "04-20s 叙事铺垫与压迫升级",
+        "duration_sec": 17.0,
+        "visual_prompt": "Mid-shot tension, atmospheric lighting, 国风奇幻、水墨金芒、粒子光晕、宏大仙山结界、体积雾",
+        "audio_cue": "背景管弦乐渐入，紧张倒计时心跳声",
+        "assigned_gpus": [
+          "gpu-node-02",
+          "gpu-node-06",
+          "gpu-node-09"
+        ]
+      },
+      {
+        "shot": 3,
+        "name": "21-50s 45秒情绪卡点与极致特效",
+        "duration_sec": 29.0,
+        "visual_prompt": "High intensity action, maximum particle density, 第45秒情绪点：一剑斩断因果长河，万古天帝残魂为之战栗！",
+        "audio_cue": "全频段管弦轰鸣，Hans Zimmer 风格高潮爆裂 (宏大东方管弦配乐、古筝撕裂扫弦、沉重定音鼓)",
+        "assigned_gpus": [
+          "gpu-node-03",
+          "gpu-node-07",
+          "gpu-node-08"
+        ]
+      },
+      {
+        "shot": 4,
+        "name": "51-60s 绝望悬念卡点与下集引流",
+        "duration_sec": 10.0,
+        "visual_prompt": "Massive scale cliffhanger shot, extreme camera pull-back, 结尾悬念：虚空裂开血色巨瞳，一道神旨宣判：此方界域，当灭！",
+        "audio_cue": "突发断崖式寂静，留白悬念音效，第6集扫码解锁卡点",
+        "assigned_gpus": [
+          "gpu-node-04",
+          "gpu-node-10",
+          "gpu-node-11",
+          "gpu-node-12"
+        ]
+      }
+    ],
+    "pipeline_dispatch": {
+      "stage_1_character_dna": {
+        "nodes": [
+          "gpu-node-01",
+          "gpu-node-02",
+          "gpu-node-03",
+          "gpu-node-04"
+        ],
+        "target": "提取主角面容与服饰特征向量，生成 4 组 100% 保持一致性的高清原画",
+        "status": "READY"
+      },
+      "stage_2_motion_synthesis": {
+        "nodes": [
+          "gpu-node-05",
+          "gpu-node-06",
+          "gpu-node-07",
+          "gpu-node-08"
+        ],
+        "target": "首尾帧图生视频运镜模拟，RIFE 4K 60FPS 运动平滑",
+        "status": "QUEUED"
+      },
+      "stage_3_audio_multilingual": {
+        "nodes": [
+          "gpu-node-09",
+          "gpu-node-10"
+        ],
+        "target": "CosyVoice 情感声音克隆，生成多语言版本 (zh, en, es, ja)，字级时间戳对齐",
+        "status": "QUEUED"
+      },
+      "stage_4_ffmpeg_composition": {
+        "nodes": [
+          "gpu-node-11",
+          "gpu-node-12"
+        ],
+        "target": "硬件加速渲染最终 9:16 竖屏 MP4，内嵌高清矢量字幕，一键分发 9 大平台",
+        "status": "QUEUED"
+      }
+    },
+    "monetization": {
+      "free_episodes": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "paywall_starts_at_episode": 6,
+      "unlock_channels": [
+        "微信扫码直付 (https://psyverse.fun/wechat_pay_qrcode.jpg)",
+        "Base 链上秒结 (0x240C74A953Fc04Fe8cD713c68b53e94d9b449F8C)",
+        "自贩机主页 (https://psyverse.fun/pay)"
+      ]
+    },
+    "created_at": "2026-09-28T00:08:29.272242+00:00Z"
+  },
+  {
+    "episode_id": "BF-MOFA-839295de",
+    "title": "死灵法典：第七深渊",
+    "genre": "魔幻 (Dark Magic)",
+    "episode_number": 1,
+    "total_duration_sec": 59.0,
+    "storyboards": [
+      {
+        "shot": 1,
+        "name": "00-03s 黄金3秒立冲突",
+        "duration_sec": 3.0,
+        "visual_prompt": "Dramatic cinematic opening, 黑暗哥特、高对比度明暗法、紫黑能量粒子、荧光绿符文、浓重烟雾, 前三秒开局：教廷审判庭前，火刑架上的灰烬突然逆流重组成巫妖真身！",
+        "audio_cue": "开场重击雷音/骤停，立竿见影抓取完播率",
+        "assigned_gpus": [
+          "gpu-node-01",
+          "gpu-node-05"
+        ]
+      },
+      {
+        "shot": 2,
+        "name": "04-20s 叙事铺垫与压迫升级",
+        "duration_sec": 17.0,
+        "visual_prompt": "Mid-shot tension, atmospheric lighting, 黑暗哥特、高对比度明暗法、紫黑能量粒子、荧光绿符文、浓重烟雾",
+        "audio_cue": "背景管弦乐渐入，紧张倒计时心跳声",
+        "assigned_gpus": [
+          "gpu-node-02",
+          "gpu-node-06",
+          "gpu-node-09"
+        ]
+      },
+      {
+        "shot": 3,
+        "name": "21-50s 45秒情绪卡点与极致特效",
+        "duration_sec": 29.0,
+        "visual_prompt": "High intensity action, maximum particle density, 第45秒情绪点：封印千万年的旧日古神投影降临，天幕变成蠕动的紫黑色符文！",
+        "audio_cue": "全频段管弦轰鸣，Hans Zimmer 风格高潮爆裂 (哥特唱诗班低吟、重金属管风琴、颤栗大提琴)",
+        "assigned_gpus": [
+          "gpu-node-03",
+          "gpu-node-07",
+          "gpu-node-08"
+        ]
+      },
+      {
+        "shot": 4,
+        "name": "51-60s 绝望悬念卡点与下集引流",
+        "duration_sec": 10.0,
+        "visual_prompt": "Massive scale cliffhanger shot, extreme camera pull-back, 结尾悬念：深渊祭坛发出低沉心跳，沉睡一万年的至高恶魔领主复苏了……",
+        "audio_cue": "突发断崖式寂静，留白悬念音效，第6集扫码解锁卡点",
+        "assigned_gpus": [
+          "gpu-node-04",
+          "gpu-node-10",
+          "gpu-node-11",
+          "gpu-node-12"
+        ]
+      }
+    ],
+    "pipeline_dispatch": {
+      "stage_1_character_dna": {
+        "nodes": [
+          "gpu-node-01",
+          "gpu-node-02",
+          "gpu-node-03",
+          "gpu-node-04"
+        ],
+        "target": "提取主角面容与服饰特征向量，生成 4 组 100% 保持一致性的高清原画",
+        "status": "READY"
+      },
+      "stage_2_motion_synthesis": {
+        "nodes": [
+          "gpu-node-05",
+          "gpu-node-06",
+          "gpu-node-07",
+          "gpu-node-08"
+        ],
+        "target": "首尾帧图生视频运镜模拟，RIFE 4K 60FPS 运动平滑",
+        "status": "QUEUED"
+      },
+      "stage_3_audio_multilingual": {
+        "nodes": [
+          "gpu-node-09",
+          "gpu-node-10"
+        ],
+        "target": "CosyVoice 情感声音克隆，生成多语言版本 (zh, en, es, ja)，字级时间戳对齐",
+        "status": "QUEUED"
+      },
+      "stage_4_ffmpeg_composition": {
+        "nodes": [
+          "gpu-node-11",
+          "gpu-node-12"
+        ],
+        "target": "硬件加速渲染最终 9:16 竖屏 MP4，内嵌高清矢量字幕，一键分发 9 大平台",
+        "status": "QUEUED"
+      }
+    },
+    "monetization": {
+      "free_episodes": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "paywall_starts_at_episode": 6,
+      "unlock_channels": [
+        "微信扫码直付 (https://psyverse.fun/wechat_pay_qrcode.jpg)",
+        "Base 链上秒结 (0x240C74A953Fc04Fe8cD713c68b53e94d9b449F8C)",
+        "自贩机主页 (https://psyverse.fun/pay)"
+      ]
+    },
+    "created_at": "2026-09-28T00:08:29.272268+00:00Z"
+  },
+  {
+    "episode_id": "BF-SCIFI-5a967d23",
+    "title": "戴森球工程：寂静纪元",
+    "genre": "科幻 (Hard Sci-Fi)",
+    "episode_number": 1,
+    "total_duration_sec": 59.0,
+    "storyboards": [
+      {
+        "shot": 1,
+        "name": "00-03s 黄金3秒立冲突",
+        "duration_sec": 3.0,
+        "visual_prompt": "Dramatic cinematic opening, 8K 硬核写实、诺兰星际穿越质感、硬边缘金属高光、体积光线、深空冷调, 前三秒开局：深空折跃引擎过载，巡洋舰直接嵌进了二向箔的边缘！",
+        "audio_cue": "开场重击雷音/骤停，立竿见影抓取完播率",
+        "assigned_gpus": [
+          "gpu-node-01",
+          "gpu-node-05"
+        ]
+      },
+      {
+        "shot": 2,
+        "name": "04-20s 叙事铺垫与压迫升级",
+        "duration_sec": 17.0,
+        "visual_prompt": "Mid-shot tension, atmospheric lighting, 8K 硬核写实、诺兰星际穿越质感、硬边缘金属高光、体积光线、深空冷调",
+        "audio_cue": "背景管弦乐渐入，紧张倒计时心跳声",
+        "assigned_gpus": [
+          "gpu-node-02",
+          "gpu-node-06",
+          "gpu-node-09"
+        ]
+      },
+      {
+        "shot": 3,
+        "name": "21-50s 45秒情绪卡点与极致特效",
+        "duration_sec": 29.0,
+        "visual_prompt": "High intensity action, maximum particle density, 第45秒情绪点：主角孤身切入主控室，以神经直连强行过载反物质反应堆！",
+        "audio_cue": "全频段管弦轰鸣，Hans Zimmer 风格高潮爆裂 (汉斯·季默式管弦潮汐、深沉合成器 Bass、时钟跳动倒计时)",
+        "assigned_gpus": [
+          "gpu-node-03",
+          "gpu-node-07",
+          "gpu-node-08"
+        ]
+      },
+      {
+        "shot": 4,
+        "name": "51-60s 绝望悬念卡点与下集引流",
+        "duration_sec": 10.0,
+        "visual_prompt": "Massive scale cliffhanger shot, extreme camera pull-back, 结尾悬念：AI 主机发出最后广播：人类已被标记为宇宙冗余进程……",
+        "audio_cue": "突发断崖式寂静，留白悬念音效，第6集扫码解锁卡点",
+        "assigned_gpus": [
+          "gpu-node-04",
+          "gpu-node-10",
+          "gpu-node-11",
+          "gpu-node-12"
+        ]
+      }
+    ],
+    "pipeline_dispatch": {
+      "stage_1_character_dna": {
+        "nodes": [
+          "gpu-node-01",
+          "gpu-node-02",
+          "gpu-node-03",
+          "gpu-node-04"
+        ],
+        "target": "提取主角面容与服饰特征向量，生成 4 组 100% 保持一致性的高清原画",
+        "status": "READY"
+      },
+      "stage_2_motion_synthesis": {
+        "nodes": [
+          "gpu-node-05",
+          "gpu-node-06",
+          "gpu-node-07",
+          "gpu-node-08"
+        ],
+        "target": "首尾帧图生视频运镜模拟，RIFE 4K 60FPS 运动平滑",
+        "status": "QUEUED"
+      },
+      "stage_3_audio_multilingual": {
+        "nodes": [
+          "gpu-node-09",
+          "gpu-node-10"
+        ],
+        "target": "CosyVoice 情感声音克隆，生成多语言版本 (zh, en, es, ja)，字级时间戳对齐",
+        "status": "QUEUED"
+      },
+      "stage_4_ffmpeg_composition": {
+        "nodes": [
+          "gpu-node-11",
+          "gpu-node-12"
+        ],
+        "target": "硬件加速渲染最终 9:16 竖屏 MP4，内嵌高清矢量字幕，一键分发 9 大平台",
+        "status": "QUEUED"
+      }
+    },
+    "monetization": {
+      "free_episodes": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "paywall_starts_at_episode": 6,
+      "unlock_channels": [
+        "微信扫码直付 (https://psyverse.fun/wechat_pay_qrcode.jpg)",
+        "Base 链上秒结 (0x240C74A953Fc04Fe8cD713c68b53e94d9b449F8C)",
+        "自贩机主页 (https://psyverse.fun/pay)"
+      ]
+    },
+    "created_at": "2026-09-28T00:08:29.273742+00:00Z"
+  },
+  {
+    "episode_id": "BF-QIHUAN-4219b9ae",
+    "title": "星界龙契：最后的守望者",
+    "genre": "奇幻 (High Fantasy)",
+    "episode_number": 1,
+    "total_duration_sec": 59.0,
+    "storyboards": [
+      {
+        "shot": 1,
+        "name": "00-03s 黄金3秒立冲突",
+        "duration_sec": 3.0,
+        "visual_prompt": "Dramatic cinematic opening, 魔戒史诗风、自然与魔法辉映、黄金色与翡翠绿光效、广袤远景, 前三秒开局：万丈悬崖边缘，濒死的雏龙将最后一口龙息吐入少年的心口！",
+        "audio_cue": "开场重击雷音/骤停，立竿见影抓取完播率",
+        "assigned_gpus": [
+          "gpu-node-01",
+          "gpu-node-05"
+        ]
+      },
+      {
+        "shot": 2,
+        "name": "04-20s 叙事铺垫与压迫升级",
+        "duration_sec": 17.0,
+        "visual_prompt": "Mid-shot tension, atmospheric lighting, 魔戒史诗风、自然与魔法辉映、黄金色与翡翠绿光效、广袤远景",
+        "audio_cue": "背景管弦乐渐入，紧张倒计时心跳声",
+        "assigned_gpus": [
+          "gpu-node-02",
+          "gpu-node-06",
+          "gpu-node-09"
+        ]
+      },
+      {
+        "shot": 3,
+        "name": "21-50s 45秒情绪卡点与极致特效",
+        "duration_sec": 29.0,
+        "visual_prompt": "High intensity action, maximum particle density, 第45秒情绪点：龙翼遮蔽双月，黄金龙炎将整座黑暗要塞熔成琉璃熔浆！",
+        "audio_cue": "全频段管弦轰鸣，Hans Zimmer 风格高潮爆裂 (史诗宏大号角、北欧女声吟唱、震撼定音鼓与铜管齐奏)",
+        "assigned_gpus": [
+          "gpu-node-03",
+          "gpu-node-07",
+          "gpu-node-08"
+        ]
+      },
+      {
+        "shot": 4,
+        "name": "51-60s 绝望悬念卡点与下集引流",
+        "duration_sec": 10.0,
+        "visual_prompt": "Massive scale cliffhanger shot, extreme camera pull-back, 结尾悬念：龙骨王座下传来深沉龙吟，真正的灭世黑龙睁开了猩红竖瞳……",
+        "audio_cue": "突发断崖式寂静，留白悬念音效，第6集扫码解锁卡点",
+        "assigned_gpus": [
+          "gpu-node-04",
+          "gpu-node-10",
+          "gpu-node-11",
+          "gpu-node-12"
+        ]
+      }
+    ],
+    "pipeline_dispatch": {
+      "stage_1_character_dna": {
+        "nodes": [
+          "gpu-node-01",
+          "gpu-node-02",
+          "gpu-node-03",
+          "gpu-node-04"
+        ],
+        "target": "提取主角面容与服饰特征向量，生成 4 组 100% 保持一致性的高清原画",
+        "status": "READY"
+      },
+      "stage_2_motion_synthesis": {
+        "nodes": [
+          "gpu-node-05",
+          "gpu-node-06",
+          "gpu-node-07",
+          "gpu-node-08"
+        ],
+        "target": "首尾帧图生视频运镜模拟，RIFE 4K 60FPS 运动平滑",
+        "status": "QUEUED"
+      },
+      "stage_3_audio_multilingual": {
+        "nodes": [
+          "gpu-node-09",
+          "gpu-node-10"
+        ],
+        "target": "CosyVoice 情感声音克隆，生成多语言版本 (zh, en, es, ja)，字级时间戳对齐",
+        "status": "QUEUED"
+      },
+      "stage_4_ffmpeg_composition": {
+        "nodes": [
+          "gpu-node-11",
+          "gpu-node-12"
+        ],
+        "target": "硬件加速渲染最终 9:16 竖屏 MP4，内嵌高清矢量字幕，一键分发 9 大平台",
+        "status": "QUEUED"
+      }
+    },
+    "monetization": {
+      "free_episodes": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "paywall_starts_at_episode": 6,
+      "unlock_channels": [
+        "微信扫码直付 (https://psyverse.fun/wechat_pay_qrcode.jpg)",
+        "Base 链上秒结 (0x240C74A953Fc04Fe8cD713c68b53e94d9b449F8C)",
+        "自贩机主页 (https://psyverse.fun/pay)"
+      ]
+    },
+    "created_at": "2026-09-28T00:08:29.273770+00:00Z"
+  },
+  {
+    "episode_id": "BF-KEPU-a43095d0",
+    "title": "量子纠缠与时间倒流：终极物理图景",
+    "genre": "科普 (Deep Science Explanatory)",
+    "episode_number": 1,
+    "total_duration_sec": 59.0,
+    "storyboards": [
+      {
+        "shot": 1,
+        "name": "00-03s 黄金3秒立冲突",
+        "duration_sec": 3.0,
+        "visual_prompt": "Dramatic cinematic opening, BBC 顶级纪录片质感、极简白与深黑物理示意图、3D 粒子流线、超高清微观模拟, 前三秒开局：爱因斯坦至死不承认的“鬼魅般的超距作用”，正在实验室被证实！",
+        "audio_cue": "开场重击雷音/骤停，立竿见影抓取完播率",
+        "assigned_gpus": [
+          "gpu-node-01",
+          "gpu-node-05"
+        ]
+      },
+      {
+        "shot": 2,
+        "name": "04-20s 叙事铺垫与压迫升级",
+        "duration_sec": 17.0,
+        "visual_prompt": "Mid-shot tension, atmospheric lighting, BBC 顶级纪录片质感、极简白与深黑物理示意图、3D 粒子流线、超高清微观模拟",
+        "audio_cue": "背景管弦乐渐入，紧张倒计时心跳声",
+        "assigned_gpus": [
+          "gpu-node-02",
+          "gpu-node-06",
+          "gpu-node-09"
+        ]
+      },
+      {
+        "shot": 3,
+        "name": "21-50s 45秒情绪卡点与极致特效",
+        "duration_sec": 29.0,
+        "visual_prompt": "High intensity action, maximum particle density, 第45秒情绪点：通过双缝干涉延迟选择实验，证明了未来正在决定过去！",
+        "audio_cue": "全频段管弦轰鸣，Hans Zimmer 风格高潮爆裂 (深邃科学探索氛围、极简钢琴脉冲、宇宙低频白噪音混响)",
+        "assigned_gpus": [
+          "gpu-node-03",
+          "gpu-node-07",
+          "gpu-node-08"
+        ]
+      },
+      {
+        "shot": 4,
+        "name": "51-60s 绝望悬念卡点与下集引流",
+        "duration_sec": 10.0,
+        "visual_prompt": "Massive scale cliffhanger shot, extreme camera pull-back, 结尾悬念：如果微观粒子没有被观测前只是概率云，那整个人类宇宙究竟是谁在观测？",
+        "audio_cue": "突发断崖式寂静，留白悬念音效，第6集扫码解锁卡点",
+        "assigned_gpus": [
+          "gpu-node-04",
+          "gpu-node-10",
+          "gpu-node-11",
+          "gpu-node-12"
+        ]
+      }
+    ],
+    "pipeline_dispatch": {
+      "stage_1_character_dna": {
+        "nodes": [
+          "gpu-node-01",
+          "gpu-node-02",
+          "gpu-node-03",
+          "gpu-node-04"
+        ],
+        "target": "提取主角面容与服饰特征向量，生成 4 组 100% 保持一致性的高清原画",
+        "status": "READY"
+      },
+      "stage_2_motion_synthesis": {
+        "nodes": [
+          "gpu-node-05",
+          "gpu-node-06",
+          "gpu-node-07",
+          "gpu-node-08"
+        ],
+        "target": "首尾帧图生视频运镜模拟，RIFE 4K 60FPS 运动平滑",
+        "status": "QUEUED"
+      },
+      "stage_3_audio_multilingual": {
+        "nodes": [
+          "gpu-node-09",
+          "gpu-node-10"
+        ],
+        "target": "CosyVoice 情感声音克隆，生成多语言版本 (zh, en, es, ja)，字级时间戳对齐",
+        "status": "QUEUED"
+      },
+      "stage_4_ffmpeg_composition": {
+        "nodes": [
+          "gpu-node-11",
+          "gpu-node-12"
+        ],
+        "target": "硬件加速渲染最终 9:16 竖屏 MP4，内嵌高清矢量字幕，一键分发 9 大平台",
+        "status": "QUEUED"
+      }
+    },
+    "monetization": {
+      "free_episodes": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "paywall_starts_at_episode": 6,
+      "unlock_channels": [
+        "微信扫码直付 (https://psyverse.fun/wechat_pay_qrcode.jpg)",
+        "Base 链上秒结 (0x240C74A953Fc04Fe8cD713c68b53e94d9b449F8C)",
+        "自贩机主页 (https://psyverse.fun/pay)"
+      ]
+    },
+    "created_at": "2026-09-28T00:08:29.274510+00:00Z"
+  }
+]
