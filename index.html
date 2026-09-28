@@ -263,6 +263,51 @@ footer{border-top:1px solid var(--line);padding:44px 0 60px;color:var(--muted);f
 .run-dispatch-btn{background:linear-gradient(135deg,#10b981,#059669);color:#fff;font-weight:700;font-size:13px;padding:9px 18px;border-radius:8px;border:none;cursor:pointer;transition:.2s;display:inline-flex;align-items:center;gap:6px}
 .run-dispatch-btn:hover{box-shadow:0 0 16px rgba(16,185,129,.4)}
 
+/* Cinema Player Section */
+.cinema-section{padding:54px 0 64px;background:linear-gradient(180deg,#060913 0%,#0a0f22 100%);border-block:1px solid var(--line)}
+.cinema-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:28px;margin-top:24px;align-items:start}
+.cinema-player-card{background:var(--surface);border:1px solid rgba(110,168,255,0.25);border-radius:16px;padding:20px;box-shadow:0 15px 45px rgba(0,0,0,0.6)}
+.player-screen-box{position:relative;background:#000;border-radius:12px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,0.8);border:1px solid rgba(110,168,255,0.2);max-width:340px;margin:0 auto}
+.player-screen-box video{width:100%;height:auto;aspect-ratio:9/16;display:block;background:#000}
+.player-badges{display:flex;justify-content:space-between;align-items:center;margin-top:14px;font-family:var(--mono);font-size:11px}
+.player-ep-title{font-family:'Noto Serif SC',serif;font-size:16px;margin:8px 0 4px;color:var(--text);font-weight:700}
+.player-ep-desc{font-size:12.5px;color:var(--muted);line-height:1.5}
+
+.cinema-playlist-card{background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:24px}
+.playlist-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.playlist-header h3{font-family:'Noto Serif SC',serif;font-size:18px}
+.playlist-list{display:flex;flex-direction:column;gap:10px}
+.pl-item{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:rgba(255,255,255,0.03);border:1px solid var(--line);border-radius:8px;cursor:pointer;transition:.2s}
+.pl-item:hover{background:rgba(110,168,255,0.08);border-color:var(--blue)}
+.pl-item.active{background:rgba(110,168,255,0.14);border-color:var(--blue)}
+.pl-item-info{display:flex;align-items:center;gap:10px}
+.pl-num{font-family:var(--mono);font-size:12px;color:var(--blue);font-weight:700}
+.pl-title{font-size:13.5px;font-weight:500}
+.pl-tag{font-family:var(--mono);font-size:10.5px;padding:3px 8px;border-radius:4px}
+.tag-free{background:rgba(16,185,129,0.15);color:#10b981;border:1px solid rgba(16,185,129,0.3)}
+.tag-lock{background:rgba(255,180,84,0.15);color:var(--amber);border:1px solid rgba(255,180,84,0.3)}
+
+.cinema-cta{margin-top:20px;padding:18px;background:linear-gradient(135deg,rgba(16,185,129,0.1),rgba(110,168,255,0.08));border:1px dashed rgba(16,185,129,0.4);border-radius:10px;text-align:center}
+.cinema-cta h4{font-size:14.5px;margin-bottom:6px;color:#10b981}
+.cinema-cta p{font-size:12px;color:var(--muted);margin-bottom:12px}
+.btn-unlock-all{width:100%;padding:11px;background:linear-gradient(135deg,#10b981,#059669);color:#fff;font-weight:700;font-size:13.5px;border:none;border-radius:8px;cursor:pointer;transition:.2s;box-shadow:0 4px 15px rgba(16,185,129,0.3)}
+.btn-unlock-all:hover{box-shadow:0 6px 20px rgba(16,185,129,0.5);transform:translateY(-1px)}
+
+/* Pay Modal */
+.pay-modal{display:none;position:fixed;inset:0;z-index:9999;align-items:center;justify-content:center;background:rgba(4,6,12,0.85);backdrop-filter:blur(8px)}
+.pay-modal.open{display:flex}
+.pay-box{background:var(--bg2);border:1px solid var(--blue);border-radius:16px;width:90%;max-width:520px;padding:26px;position:relative;box-shadow:0 25px 60px rgba(0,0,0,0.85)}
+.pay-close{position:absolute;top:14px;right:14px;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,0.05);color:var(--muted);cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;transition:.2s}
+.pay-close:hover{color:var(--text);border-color:var(--blue)}
+.pay-tabs{display:flex;gap:6px;border-bottom:1px solid var(--line);padding-bottom:12px;margin:16px 0}
+.p-tab{padding:7px 12px;background:transparent;border:1px solid transparent;border-radius:6px;color:var(--muted);cursor:pointer;font-size:12.5px;transition:.2s}
+.p-tab.active{background:rgba(110,168,255,0.12);border-color:var(--blue);color:var(--text);font-weight:700}
+.p-pane{display:none;text-align:center;padding:12px 0}
+.p-pane.active{display:block}
+.p-qr{width:190px;height:190px;border-radius:10px;border:2px solid var(--line);margin:0 auto 12px;background:#fff;display:block;object-fit:contain}
+.pay-address-box{background:rgba(255,255,255,0.03);border:1px solid var(--line);border-radius:8px;padding:12px;margin-top:10px;font-family:var(--mono);font-size:11px;word-break:break-all;text-align:left}
+@media(max-width:860px){.cinema-grid{grid-template-columns:1fr}}
+
 /* reveal */
 .rv{opacity:0;transform:translateY(26px);transition:opacity .7s,transform .7s}
 .rv.on{opacity:1;transform:none}
@@ -282,7 +327,7 @@ footer{border-top:1px solid var(--line);padding:44px 0 60px;color:var(--muted);f
       蓝果短剧 <small>AI-NATIVE&nbsp;STUDIO</small>
     </a>
     <nav>
-      <a href="#genres">类型</a><a href="#library">片库</a><a href="#pipeline">制作管线</a><a href="#gpu-fleet">12节点GPU</a><a href="#cost">成本</a><a href="https://ai-for-money.psyverse.fun" target="_blank">搞钱平台 ↗</a><a href="https://psyverse.fun/payment" target="_blank">统一收银 ↗</a>
+      <a href="#genres">类型</a><a href="#cinema">在线展映厅</a><a href="#library">片库</a><a href="#pipeline">制作管线</a><a href="#gpu-fleet">12节点GPU</a><a href="#cost">成本</a><a href="https://ai-for-money.psyverse.fun" target="_blank">搞钱平台 ↗</a><a href="https://psyverse.fun/payment" target="_blank">统一收银 ↗</a>
     </nav>
   </div>
 </header>
@@ -352,10 +397,96 @@ footer{border-top:1px solid var(--line);padding:44px 0 60px;color:var(--muted);f
   </div>
 </section>
 
-<!-- 02 LIBRARY -->
+<!-- 02 CINEMA / SCREENING ROOM -->
+<section id="cinema" class="cinema-section">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="sec-num">02</span><h2>在线展映厅 · 4K/60FPS 实测放映</h2><span class="sec-en">Live Cinema Screening</span></div>
+    <p class="sec-sub rv">12 节点 GPU 算力集群原生压制成品直接试看。前两集公开放映，后续剧集直结 0% 抽成收银自贩机。</p>
+
+    <div class="cinema-grid rv">
+      <div class="cinema-player-card">
+        <div class="player-screen-box">
+          <video id="main-video-player" controls playsinline preload="metadata" poster="og.png" src="output/BF_XUANHUAN_EP01_DISPATCH.mp4">
+            您的浏览器不支持 HTML5 视频播放。
+          </video>
+        </div>
+        <div class="player-badges">
+          <span style="color:var(--blue)">● 正在放映：<span id="now-playing-label">第 01 集 · 引仙令碎裂</span></span>
+          <span style="color:var(--muted)">1080x1920 · 60FPS · H.264</span>
+        </div>
+        <div class="player-ep-title" id="now-playing-title">《万劫不灭道》第 01 集 · 引仙令碎裂</div>
+        <div class="player-ep-desc" id="now-playing-desc">前三秒开局：青云宗引仙令碎裂，万道雷劫撕裂山门。主角以凡躯硬抗化神雷劫，体内太古凶兽骨文逐一觉醒。</div>
+      </div>
+
+      <div class="cinema-playlist-card">
+        <div class="playlist-header">
+          <h3>选集播放列表</h3>
+          <span style="font-family:var(--mono);font-size:11.5px;color:var(--muted)">共 6 集 · 前 2 集公映</span>
+        </div>
+        <div class="playlist-list">
+          <div class="pl-item active" data-src="output/BF_XUANHUAN_EP01_DISPATCH.mp4" data-title="《万劫不灭道》第 01 集 · 引仙令碎裂" data-desc="前三秒开局：青云宗引仙令碎裂，万道雷劫撕裂山门。主角以凡躯硬抗化神雷劫，体内太古凶兽骨文逐一觉醒。" data-num="EP.01" data-free="true">
+            <div class="pl-item-info">
+              <span class="pl-num">01</span>
+              <span class="pl-title">第 01 集 · 引仙令碎裂</span>
+            </div>
+            <span class="pl-tag tag-free">公映免费</span>
+          </div>
+
+          <div class="pl-item" data-src="output/BF_XUANHUAN_EP02_DISPATCH.mp4" data-title="《万劫不灭道》第 02 集 · 剑渊重瞳与混沌青莲" data-desc="第 45 秒情绪点：九大仙门老祖合围剑渊，主角身后浮现混沌青莲，剑渊重瞳苏醒，一剑荡灭因果！" data-num="EP.02" data-free="true">
+            <div class="pl-item-info">
+              <span class="pl-num">02</span>
+              <span class="pl-title">第 02 集 · 剑渊重瞳</span>
+            </div>
+            <span class="pl-tag tag-free">公映免费</span>
+          </div>
+
+          <div class="pl-item locked" data-num="EP.03" data-free="false" data-title="第 03 集 · 仙盟天劫大合围">
+            <div class="pl-item-info">
+              <span class="pl-num">03</span>
+              <span class="pl-title">第 03 集 · 仙盟合围</span>
+            </div>
+            <span class="pl-tag tag-lock">🔒 扫码解锁</span>
+          </div>
+
+          <div class="pl-item locked" data-num="EP.04" data-free="false" data-title="第 04 集 · 混沌青莲现世">
+            <div class="pl-item-info">
+              <span class="pl-num">04</span>
+              <span class="pl-title">第 04 集 · 青莲现世</span>
+            </div>
+            <span class="pl-tag tag-lock">🔒 扫码解锁</span>
+          </div>
+
+          <div class="pl-item locked" data-num="EP.05" data-free="false" data-title="第 05 集 · 一剑荡灭因果">
+            <div class="pl-item-info">
+              <span class="pl-num">05</span>
+              <span class="pl-title">第 05 集 · 荡灭因果</span>
+            </div>
+            <span class="pl-tag tag-lock">🔒 扫码解锁</span>
+          </div>
+
+          <div class="pl-item locked" data-num="EP.06" data-free="false" data-title="第 06 集 · 苍穹魔皇大结局">
+            <div class="pl-item-info">
+              <span class="pl-num">06</span>
+              <span class="pl-title">第 06 集 · 终局之战</span>
+            </div>
+            <span class="pl-tag tag-lock">🔒 扫码解锁</span>
+          </div>
+        </div>
+
+        <div class="cinema-cta">
+          <h4>💰 0% 平台抽成直付通道</h4>
+          <p>单集 ¥1.00 解锁 / ¥19.90 买断整季（直连微信 / 支付宝 / Base USDC）</p>
+          <button class="btn-unlock-all" id="btn-open-unlock">🔓 立即扫码解锁后卷剧集</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 LIBRARY -->
 <section id="library" style="background:var(--bg2);border-block:1px solid var(--line)">
   <div class="wrap">
-    <div class="sec-head rv"><span class="sec-num">02</span><h2>片库</h2><span class="sec-en">12 Titles · 465 Episodes</span></div>
+    <div class="sec-head rv"><span class="sec-num">03</span><h2>片库</h2><span class="sec-en">12 Titles · 465 Episodes</span></div>
     <p class="sec-sub rv">首批片单。每部都是一个世界观，不是一个流量套路。点击海报看分集。</p>
     <div class="showgrid" id="shows"></div>
   </div>
@@ -505,6 +636,56 @@ footer{border-top:1px solid var(--line);padding:44px 0 60px;color:var(--muted);f
       <div class="m-meta" id="m-meta"></div>
       <p class="m-syn" id="m-syn"></p>
       <div class="eps"><h4>分集 · 前 12 集</h4><div id="m-eps"></div></div>
+</div>
+
+<!-- UNIFIED PAYMENT MODAL -->
+<div class="pay-modal" id="pay-modal">
+  <div class="pay-box">
+    <button class="pay-close" id="btn-close-pay">✕</button>
+    <h3 style="font-family:'Noto Serif SC',serif;font-size:20px;margin-bottom:6px">解锁蓝果短剧 VIP 全集</h3>
+    <p style="font-size:12.5px;color:var(--muted)">官方独立收款凭证 · 0% 平台抽成直达创作者账户</p>
+
+    <div class="pay-tabs">
+      <button class="p-tab active" data-tab="wechat">微信支付</button>
+      <button class="p-tab" data-tab="alipay">支付宝</button>
+      <button class="p-tab" data-tab="web3">Web3 / Base</button>
+      <button class="p-tab" data-tab="paypal">PayPal 全球</button>
+    </div>
+
+    <!-- WeChat -->
+    <div class="p-pane active" id="pane-wechat">
+      <img src="https://psyverse.fun/wechat_pay_qrcode.jpg" class="p-qr" alt="微信支付">
+      <div style="font-size:13px;font-weight:700">收款人：戈文波 (**波)</div>
+      <div style="font-size:11.5px;color:var(--muted);margin-top:4px">微信扫一扫直付 ¥1.00 解锁单集 / ¥19.90 买断全季</div>
+    </div>
+
+    <!-- Alipay -->
+    <div class="p-pane" id="pane-alipay">
+      <img src="https://psyverse.fun/alipay_qrcode.jpg" class="p-qr" alt="支付宝">
+      <div style="font-size:13px;font-weight:700">收款人：文波 (**波)</div>
+      <div style="font-size:11.5px;color:var(--muted);margin-top:4px">支付宝扫一扫直付 ¥1.00 解锁单集 / ¥19.90 买断全季</div>
+    </div>
+
+    <!-- Web3 -->
+    <div class="p-pane" id="pane-web3">
+      <div style="font-size:13px;font-weight:700;color:var(--blue)">ENS 顶级域名：gewenbo.eth</div>
+      <div class="pay-address-box">
+        0x240C74A953Fc04Fe8cD713c68b53e94d9b449F8C
+      </div>
+      <div style="font-size:11.5px;color:var(--muted);margin-top:8px">支持网络：Base / Arbitrum / Polygon / Ethereum<br>支持代币：USDC / USDT / ETH (0% 抽成 · 秒级链上确权)</div>
+    </div>
+
+    <!-- PayPal -->
+    <div class="p-pane" id="pane-paypal">
+      <div style="margin:20px 0">
+        <a href="https://paypal.me/gewenbo888" target="_blank" class="btn-primary" style="display:inline-block">前往 PayPal.me 付款 ($2.99 / $9.90) ↗</a>
+      </div>
+      <div style="font-size:12px;color:var(--muted)">关联账户：gewenbo888@gmail.com · 戈文波 (Gewenbo)</div>
+    </div>
+
+    <div style="border-top:1px solid var(--line);margin-top:16px;padding-top:12px;display:flex;justify-content:space-between;font-size:11px;color:var(--muted)">
+      <a href="https://psyverse.fun/payment" target="_blank" style="color:var(--blue)">官方唯一收款凭证主页 ↗</a>
+      <a href="https://psyverse.fun/pay" target="_blank" style="color:#10b981">数字自贩机在线入口 ↗</a>
     </div>
   </div>
 </div>
@@ -814,11 +995,69 @@ if(dispatchBtn){
       });
       
       dispatchBtn.disabled = false;
-      dispatchBtn.innerHTML = '<span>▶ 再次调度生成新分镜</span>';
       twEl.scrollTop = twEl.scrollHeight;
     }, 2700);
   });
 }
+
+/* ---------- Cinema Player & Pay Modal Logic ---------- */
+const mainVideo = document.getElementById('main-video-player');
+const nowLabel = document.getElementById('now-playing-label');
+const nowTitle = document.getElementById('now-playing-title');
+const nowDesc = document.getElementById('now-playing-desc');
+const payModal = document.getElementById('pay-modal');
+const btnOpenUnlock = document.getElementById('btn-open-unlock');
+const btnClosePay = document.getElementById('btn-close-pay');
+
+if (payModal && btnClosePay) {
+  btnClosePay.addEventListener('click', () => payModal.classList.remove('open'));
+  payModal.addEventListener('click', (e) => {
+    if (e.target === payModal) payModal.classList.remove('open');
+  });
+
+  document.querySelectorAll('.p-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.p-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.p-pane').forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      const targetPane = document.getElementById('pane-' + tab.dataset.tab);
+      if (targetPane) targetPane.classList.add('active');
+    });
+  });
+}
+
+if (btnOpenUnlock) {
+  btnOpenUnlock.addEventListener('click', () => {
+    if (payModal) payModal.classList.add('open');
+  });
+}
+
+document.querySelectorAll('.pl-item').forEach(item => {
+  item.addEventListener('click', () => {
+    const isFree = item.dataset.free === 'true';
+    if (!isFree) {
+      if (payModal) payModal.classList.add('open');
+      return;
+    }
+
+    document.querySelectorAll('.pl-item').forEach(i => i.classList.remove('active'));
+    item.classList.add('active');
+
+    const src = item.dataset.src;
+    const title = item.dataset.title;
+    const desc = item.dataset.desc;
+    const num = item.dataset.num;
+
+    if (mainVideo && src) {
+      mainVideo.src = src;
+      mainVideo.load();
+      mainVideo.play().catch(() => {});
+    }
+    if (nowLabel) nowLabel.textContent = `${num} · ${item.querySelector('.pl-title')?.textContent || ''}`;
+    if (nowTitle) nowTitle.textContent = title || '';
+    if (nowDesc) nowDesc.textContent = desc || '';
+  });
+});
 </script>
 </body>
 </html>
