@@ -9,6 +9,149 @@
   if (window.location.hostname === 'languoduanju.psyverse.fun') {
     window.location.replace('https://bluefruit.psyverse.fun' + window.location.pathname + window.location.search);
   }
+
+/* ---------- PROMPT & CONCEPT LAB DATA & LOGIC ---------- */
+const PROMPT_RECIPES = {
+  xuanhuan: {
+    genre: "玄幻 · Eastern Fantasy",
+    hookTitle: "0-3s 黄金冲突钩子",
+    hookPrompt: "东方神话巨擘风格，青云古宗山门天穹被猩红九霄神雷撕裂，引仙石碑剧烈坍塌爆炸，碎石在超强冲击波中漫天激射。少年林渊白发被狂风吹散，单手直指雷劫中心，眼眸中金色太古骨文急速转动。8k resolution, cinematic lighting, volumetric lightning rays, Unreal Engine 5 render, Masterpiece.",
+    hookDialogue: "林渊：‘青云宗欺我三千年无灵根，今日这飞升雷劫——我替诸天万界收了！’",
+    twistTitle: "45s 情绪转折卡点",
+    twistPrompt: "太古骨文从主角掌心蔓延至整条右臂，玄黄凶兽虚影在黑云后睁开千丈金瞳，山门九位化神期长老剑阵当场碎裂，剑刃倒插于大地，飞沙走石与空间扭曲碎片。dramatic chiaroscuro lighting, slow motion 60fps, particle storm, epic scale.",
+    twistDialogue: "传功长老惊骇倒退：‘不可能……他体内封印的不是废脉，那是吞噬上古仙魔的混沌归墟！’",
+    cliffTitle: "55-60s 绝望卡点与付费墙钩子",
+    cliffPrompt: "九霄天劫正上方，虚空中浮现出一只遮蔽整座大陆的冰冷金色眼眸，上苍法旨降临，整片大陆的灵气瞬间归零，主角身后混沌巨兽仰天咆哮。镜头在眼眸凝视主角的瞬间拉成全景黑屏。extreme tension, cliffhanger, glowing runes, dark cinematic depth.",
+    audioPrompt: "BGM: Hans Zimmer 级重度低音铜管咆哮 + 传统古筝急速刮奏，雷鸣与剑器爆裂声。Voicebox: 沉稳低沉撕裂感青年男声，呼吸声清晰。"
+  },
+  mofa: {
+    genre: "魔幻 · Dark Magic & Sorcery",
+    hookTitle: "0-3s 黄金冲突钩子",
+    hookPrompt: "暗黑哥特中世纪大教堂，十二根古老雕花石柱在紫黑色魔法风暴中化为粉末。首席禁咒法师手握龙骨魔杖，杖尖燃烧着不灭冥火，整座王都天空升起猩红六芒星法阵。8k, hyper-detailed, gothic dark fantasy, glowing purple runes, volumetric smoke, ray tracing.",
+    hookDialogue: "法师：‘第七任教皇欺瞒世人三百年，这所谓的圣光之下，囚禁的是整整十万名黑魔法受害者的冤魂！’",
+    twistTitle: "45s 情绪转折卡点",
+    twistPrompt: "圣光审判骑士团的铠甲在一秒内被暗黑触手腐蚀成白灰，主教胸前悬挂的圣杯中流淌出滚烫熔岩，反魔法立场屏障瞬间崩解，暗夜恶魔的双翼从圣母雕像后方轰然展开。extreme cinematic tension, hyper-realistic dark fantasy, dynamic camera orbit.",
+    twistDialogue: "教皇面具脱落：‘你居然敢直视深渊……既然你见到了真正的神明，那就与这座城一起陪葬吧！’",
+    cliffTitle: "55-60s 绝望卡点与付费墙钩子",
+    cliffPrompt: "主角翻开禁忌法典的最终页，法典内伸出无数枯骨抓住他的双臂，全城法力光芒汇入其身躯，王都地面开始垂直向深渊坠落。黑屏卡点。apocalyptic scale, dark magic singularity, dramatic cliffhanger cut.",
+    audioPrompt: "BGM: 哥特女声重唱圣咏与深邃大提琴交织，管风琴轰鸣与火焰呼啸。Voicebox: 磁性沙哑中音，带轻微空间回响。"
+  },
+  scifi: {
+    genre: "科幻 · Hard Sci-Fi",
+    hookTitle: "0-3s 黄金冲突钩子",
+    hookPrompt: "深空柯伊伯带边缘，重型核聚变货运穿梭机剧烈震动，主推进器喷出千米等离子幽蓝尾焰。前方原本空无一物的星图上，突然凭空撕裂出一道长达数万公里的非欧几里得引力裂缝，数千艘外星母舰的几何阴影缓缓浮现。photorealistic 8k, hard sci-fi, Christopher Nolan aesthetic, Interstellar style, dynamic camera shake, cinematic.",
+    hookDialogue: "舰长：‘全舰进入紧急过载状态！这不是自然引力波，是三类文明的维度投射！’",
+    twistTitle: "45s 情绪转折卡点",
+    twistPrompt: "空间站引力环断裂，失重漂浮的工程师隔着强化玻璃注视着太阳在数秒内被戴森球网格锁死变暗，空间站所有全息界面闪烁刺目红光并跳出人类基因灭绝协议。hard sci-fi interior, neon red emergency lights, macro reflection on helmet visor, photorealistic.",
+    twistDialogue: "AI 主脑女声：‘警报，警报：地球总部已于 42 秒前被二维化，全人类仅剩当前舰船 71 名幸存者。’",
+    cliffTitle: "55-60s 绝望卡点与付费墙钩子",
+    cliffPrompt: "主角启动反物质曲率引擎最高过载，穿梭机跃迁入引力透镜中心，前方裂隙中浮现出与地球一模一样但体积庞大万倍的镜面星球。警报声戛然而止，黑屏。Interstellar black hole aesthetic, breathtaking, cliffhanger.",
+    audioPrompt: "BGM: 钛金属撞击与次声波低频震荡，机械警报声，宇宙真空窒息感音效。Voicebox: 沉着冷冽中英双语女声，快速倒计时。"
+  },
+  qihuan: {
+    genre: "奇幻 · High Fantasy & Myth",
+    hookTitle: "0-3s 黄金冲突钩子",
+    hookPrompt: "九万米浮空大陆边缘，巨大古老蒸汽发条齿轮与巨龙肋骨严丝合缝咬合，排气阀喷射出金色蒸汽云海。机械驯兽师踩在飞空艇龙骨尖端，手中缰绳连接着展翅三千米的机械发条青铜巨龙。high fantasy, Hayao Miyazaki meets Steampunk, vibrant colors, epic sky view, golden hour sunlight, 8k render.",
+    hookDialogue: "驯兽师：‘只要发条还在转动，天穹诸神的浮空岛就别想踏入人间一步！’",
+    twistTitle: "45s 情绪转折卡点",
+    twistPrompt: "云海深处浮现出一座由纯净光晶体构建的天空圣城，无数光刃天使从圣城城门倾泻而下，发条巨龙的动力核心在光刃轰击下出现裂缝，蓝色源石能量液如瀑布倾泻。epic aerial battle, dynamic depth of field, anime cinematic masterpiece.",
+    twistDialogue: "天界审判官：‘凡人用破铜烂铁拼凑的心脏，也敢自称能载动诸神之怒？’",
+    cliffTitle: "55-60s 绝望卡点与付费墙钩子",
+    cliffPrompt: "驯兽师扯断自身源石神经接驳线，将其直接插进巨龙心脏，整条机械巨龙爆发出刺目超新星蓝焰，向天空圣城主炮口迎面撞去。巨响前瞬间黑屏。explosive climax, dramatic freeze frame, epic cliffhanger.",
+    audioPrompt: "BGM: 激昂管弦乐交响与凯尔特风笛，蒸汽齿轮咔哒声与龙啸。Voicebox: 热血高亢少年音，情绪饱满。"
+  },
+  kepu: {
+    genre: "科普 · Deep Science Explanatory",
+    hookTitle: "0-3s 黄金冲突钩子",
+    hookPrompt: "微观量子尺度极限放大，两个自旋相反的纠缠电子在普朗克尺度光晶格中高速自旋，虚光子如量子雨般在两个粒子间跳跃。镜头以超光速穿透星系尺度拉远，展现相隔4光年的两个粒子瞬间同时改变偏振态。scientific visualization, quantum entanglement, Planck scale, hyper-realistic scientific documentary, BBC / Cosmos style, 8k render.",
+    hookDialogue: "旁白：‘爱因斯坦曾称它为幽灵般的超距作用。但在 2026 年，人类终于抓到了它的物理尾巴。’",
+    twistTitle: "45s 情绪转折卡点",
+    twistPrompt: "从微观量子跃迁至宏观宇宙微波背景辐射图，宇宙大爆炸奇点在纳秒内暴胀展开，引力波在四维时空晶格中激荡出剧烈涟漪，时空曲率被超大质量黑洞垂直撕裂。Cosmic inflation, gravitational waves, 4D spacetime fabric warping, documentary cinematography.",
+    twistDialogue: "科学家：‘如果贝尔不等式在全宇宙尺度破缺，那么我们生活的整个时空，可能只是一张全息投影。’",
+    cliffTitle: "55-60s 绝望卡点与付费墙钩子",
+    cliffPrompt: "探测器屏幕上的量子干涉条纹在人类眨眼的百分之一毫秒内突然消失，取而代之的是一段用摩尔斯电码排列的宇宙基底常数。镜头瞬间切入纯黑，滴声留白。mind-bending science mystery, chilling realization, documentary cliffhanger.",
+    audioPrompt: "BGM: 极简纯净合成器音效与脉冲星射电信号采样，深邃空灵。Voicebox: 理性知性磁性解说音（央视纪录片/BBC解说腔）。"
+  }
+};
+
+function showToast(msg) {
+  const el = document.getElementById('toast-msg');
+  if (!el) return;
+  el.textContent = msg || '已复制到剪贴板！';
+  el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), 2200);
+}
+
+window.copyPromptText = function(genreKey) {
+  const data = PROMPT_RECIPES[genreKey];
+  if (!data) return;
+  const fullText = `【蓝果短剧 · ${data.genre} 提示词工程】\\n\\n1. ${data.hookTitle}:\\n${data.hookPrompt}\\n台词: ${data.hookDialogue}\\n\\n2. ${data.twistTitle}:\\n${data.twistPrompt}\\n台词: ${data.twistDialogue}\\n\\n3. ${data.cliffTitle}:\\n${data.cliffPrompt}\\n\\n4. 声音与配乐工程:\\n${data.audioPrompt}`;
+  navigator.clipboard.writeText(fullText).then(() => {
+    showToast('✔ 完整分镜提示词已复制！');
+  }).catch(() => {
+    showToast('✔ 已选择提示词文本');
+  });
+};
+
+function renderPromptLab(genreKey) {
+  const c = document.getElementById('lab-card-content');
+  if (!c) return;
+  const data = PROMPT_RECIPES[genreKey] || PROMPT_RECIPES.xuanhuan;
+  c.innerHTML = `
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div class="lab-block">
+        <div class="lab-lbl">
+          <span>🎯 ${data.hookTitle}</span>
+          <button class="btn-copy-prompt" onclick="navigator.clipboard.writeText('${data.hookPrompt.replace(/'/g, "\\\\'")}'); showToast('✔ 0-3s 提示词已复制');">复制提示词</button>
+        </div>
+        <div class="lab-val"><b>画面指令：</b>${data.hookPrompt}</div>
+        <div style="margin-top:8px;font-size:12.5px;color:var(--amber)"><b>冲突台词：</b>${data.hookDialogue}</div>
+      </div>
+
+      <div class="lab-block">
+        <div class="lab-lbl">
+          <span>⚡ ${data.twistTitle}</span>
+          <button class="btn-copy-prompt" onclick="navigator.clipboard.writeText('${data.twistPrompt.replace(/'/g, "\\\\'")}'); showToast('✔ 45s 提示词已复制');">复制提示词</button>
+        </div>
+        <div class="lab-val"><b>画面指令：</b>${data.twistPrompt}</div>
+        <div style="margin-top:8px;font-size:12.5px;color:var(--amber)"><b>情绪台词：</b>${data.twistDialogue}</div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div class="lab-block">
+        <div class="lab-lbl">
+          <span>🔒 ${data.cliffTitle}</span>
+          <button class="btn-copy-prompt" onclick="navigator.clipboard.writeText('${data.cliffPrompt.replace(/'/g, "\\\\'")}'); showToast('✔ 绝望卡点提示词已复制');">复制提示词</button>
+        </div>
+        <div class="lab-val"><b>画面指令：</b>${data.cliffPrompt}</div>
+        <div style="margin-top:8px;font-size:11.5px;color:var(--muted)">逻辑：在此处精准插入剧集付费墙或引导扫码解锁下一集。</div>
+      </div>
+
+      <div class="lab-block">
+        <div class="lab-lbl">
+          <span>🎙️ 声音克隆与音效参数 (Voicebox / Suno)</span>
+          <button class="btn-copy-prompt" onclick="navigator.clipboard.writeText('${data.audioPrompt.replace(/'/g, "\\\\'")}'); showToast('✔ 音效参数已复制');">复制音效参数</button>
+        </div>
+        <div class="lab-val">${data.audioPrompt}</div>
+      </div>
+
+      <div style="text-align:right">
+        <button class="btn-primary" style="width:100%;justify-content:center" onclick="copyPromptText('${genreKey}')">📋 一键复制该题材整套分镜工程</button>
+      </div>
+    </div>
+  `;
+}
+
+// Lab Tab Click
+document.querySelectorAll('.lab-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.lab-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    renderPromptLab(tab.dataset.genre);
+  });
+});
+renderPromptLab('xuanhuan');
 </script>
 <!-- SEO · GEO -->
 <meta name="description" content="蓝果短剧：AI 原生短剧厂牌。专攻真人拍摄成本最高、特效最密集的五大核心矩阵——玄幻、魔幻、科幻、奇幻、科普。12 节点 GPU 集群驱动，单集成本压到真人剧的 8%，一部真人剧的预算铺二十部。">
@@ -42,13 +185,299 @@
   "author": { "@type": "Person", "name": "Gewenbo", "url": "https://psyverse.fun/" },
   "publisher": { "@type": "Organization", "name": "Psyverse", "url": "https://psyverse.fun/" }
 }
+
+/* ---------- PROMPT & CONCEPT LAB DATA & LOGIC ---------- */
+const PROMPT_RECIPES = {
+  xuanhuan: {
+    genre: "玄幻 · Eastern Fantasy",
+    hookTitle: "0-3s 黄金冲突钩子",
+    hookPrompt: "东方神话巨擘风格，青云古宗山门天穹被猩红九霄神雷撕裂，引仙石碑剧烈坍塌爆炸，碎石在超强冲击波中漫天激射。少年林渊白发被狂风吹散，单手直指雷劫中心，眼眸中金色太古骨文急速转动。8k resolution, cinematic lighting, volumetric lightning rays, Unreal Engine 5 render, Masterpiece.",
+    hookDialogue: "林渊：‘青云宗欺我三千年无灵根，今日这飞升雷劫——我替诸天万界收了！’",
+    twistTitle: "45s 情绪转折卡点",
+    twistPrompt: "太古骨文从主角掌心蔓延至整条右臂，玄黄凶兽虚影在黑云后睁开千丈金瞳，山门九位化神期长老剑阵当场碎裂，剑刃倒插于大地，飞沙走石与空间扭曲碎片。dramatic chiaroscuro lighting, slow motion 60fps, particle storm, epic scale.",
+    twistDialogue: "传功长老惊骇倒退：‘不可能……他体内封印的不是废脉，那是吞噬上古仙魔的混沌归墟！’",
+    cliffTitle: "55-60s 绝望卡点与付费墙钩子",
+    cliffPrompt: "九霄天劫正上方，虚空中浮现出一只遮蔽整座大陆的冰冷金色眼眸，上苍法旨降临，整片大陆的灵气瞬间归零，主角身后混沌巨兽仰天咆哮。镜头在眼眸凝视主角的瞬间拉成全景黑屏。extreme tension, cliffhanger, glowing runes, dark cinematic depth.",
+    audioPrompt: "BGM: Hans Zimmer 级重度低音铜管咆哮 + 传统古筝急速刮奏，雷鸣与剑器爆裂声。Voicebox: 沉稳低沉撕裂感青年男声，呼吸声清晰。"
+  },
+  mofa: {
+    genre: "魔幻 · Dark Magic & Sorcery",
+    hookTitle: "0-3s 黄金冲突钩子",
+    hookPrompt: "暗黑哥特中世纪大教堂，十二根古老雕花石柱在紫黑色魔法风暴中化为粉末。首席禁咒法师手握龙骨魔杖，杖尖燃烧着不灭冥火，整座王都天空升起猩红六芒星法阵。8k, hyper-detailed, gothic dark fantasy, glowing purple runes, volumetric smoke, ray tracing.",
+    hookDialogue: "法师：‘第七任教皇欺瞒世人三百年，这所谓的圣光之下，囚禁的是整整十万名黑魔法受害者的冤魂！’",
+    twistTitle: "45s 情绪转折卡点",
+    twistPrompt: "圣光审判骑士团的铠甲在一秒内被暗黑触手腐蚀成白灰，主教胸前悬挂的圣杯中流淌出滚烫熔岩，反魔法立场屏障瞬间崩解，暗夜恶魔的双翼从圣母雕像后方轰然展开。extreme cinematic tension, hyper-realistic dark fantasy, dynamic camera orbit.",
+    twistDialogue: "教皇面具脱落：‘你居然敢直视深渊……既然你见到了真正的神明，那就与这座城一起陪葬吧！’",
+    cliffTitle: "55-60s 绝望卡点与付费墙钩子",
+    cliffPrompt: "主角翻开禁忌法典的最终页，法典内伸出无数枯骨抓住他的双臂，全城法力光芒汇入其身躯，王都地面开始垂直向深渊坠落。黑屏卡点。apocalyptic scale, dark magic singularity, dramatic cliffhanger cut.",
+    audioPrompt: "BGM: 哥特女声重唱圣咏与深邃大提琴交织，管风琴轰鸣与火焰呼啸。Voicebox: 磁性沙哑中音，带轻微空间回响。"
+  },
+  scifi: {
+    genre: "科幻 · Hard Sci-Fi",
+    hookTitle: "0-3s 黄金冲突钩子",
+    hookPrompt: "深空柯伊伯带边缘，重型核聚变货运穿梭机剧烈震动，主推进器喷出千米等离子幽蓝尾焰。前方原本空无一物的星图上，突然凭空撕裂出一道长达数万公里的非欧几里得引力裂缝，数千艘外星母舰的几何阴影缓缓浮现。photorealistic 8k, hard sci-fi, Christopher Nolan aesthetic, Interstellar style, dynamic camera shake, cinematic.",
+    hookDialogue: "舰长：‘全舰进入紧急过载状态！这不是自然引力波，是三类文明的维度投射！’",
+    twistTitle: "45s 情绪转折卡点",
+    twistPrompt: "空间站引力环断裂，失重漂浮的工程师隔着强化玻璃注视着太阳在数秒内被戴森球网格锁死变暗，空间站所有全息界面闪烁刺目红光并跳出人类基因灭绝协议。hard sci-fi interior, neon red emergency lights, macro reflection on helmet visor, photorealistic.",
+    twistDialogue: "AI 主脑女声：‘警报，警报：地球总部已于 42 秒前被二维化，全人类仅剩当前舰船 71 名幸存者。’",
+    cliffTitle: "55-60s 绝望卡点与付费墙钩子",
+    cliffPrompt: "主角启动反物质曲率引擎最高过载，穿梭机跃迁入引力透镜中心，前方裂隙中浮现出与地球一模一样但体积庞大万倍的镜面星球。警报声戛然而止，黑屏。Interstellar black hole aesthetic, breathtaking, cliffhanger.",
+    audioPrompt: "BGM: 钛金属撞击与次声波低频震荡，机械警报声，宇宙真空窒息感音效。Voicebox: 沉着冷冽中英双语女声，快速倒计时。"
+  },
+  qihuan: {
+    genre: "奇幻 · High Fantasy & Myth",
+    hookTitle: "0-3s 黄金冲突钩子",
+    hookPrompt: "九万米浮空大陆边缘，巨大古老蒸汽发条齿轮与巨龙肋骨严丝合缝咬合，排气阀喷射出金色蒸汽云海。机械驯兽师踩在飞空艇龙骨尖端，手中缰绳连接着展翅三千米的机械发条青铜巨龙。high fantasy, Hayao Miyazaki meets Steampunk, vibrant colors, epic sky view, golden hour sunlight, 8k render.",
+    hookDialogue: "驯兽师：‘只要发条还在转动，天穹诸神的浮空岛就别想踏入人间一步！’",
+    twistTitle: "45s 情绪转折卡点",
+    twistPrompt: "云海深处浮现出一座由纯净光晶体构建的天空圣城，无数光刃天使从圣城城门倾泻而下，发条巨龙的动力核心在光刃轰击下出现裂缝，蓝色源石能量液如瀑布倾泻。epic aerial battle, dynamic depth of field, anime cinematic masterpiece.",
+    twistDialogue: "天界审判官：‘凡人用破铜烂铁拼凑的心脏，也敢自称能载动诸神之怒？’",
+    cliffTitle: "55-60s 绝望卡点与付费墙钩子",
+    cliffPrompt: "驯兽师扯断自身源石神经接驳线，将其直接插进巨龙心脏，整条机械巨龙爆发出刺目超新星蓝焰，向天空圣城主炮口迎面撞去。巨响前瞬间黑屏。explosive climax, dramatic freeze frame, epic cliffhanger.",
+    audioPrompt: "BGM: 激昂管弦乐交响与凯尔特风笛，蒸汽齿轮咔哒声与龙啸。Voicebox: 热血高亢少年音，情绪饱满。"
+  },
+  kepu: {
+    genre: "科普 · Deep Science Explanatory",
+    hookTitle: "0-3s 黄金冲突钩子",
+    hookPrompt: "微观量子尺度极限放大，两个自旋相反的纠缠电子在普朗克尺度光晶格中高速自旋，虚光子如量子雨般在两个粒子间跳跃。镜头以超光速穿透星系尺度拉远，展现相隔4光年的两个粒子瞬间同时改变偏振态。scientific visualization, quantum entanglement, Planck scale, hyper-realistic scientific documentary, BBC / Cosmos style, 8k render.",
+    hookDialogue: "旁白：‘爱因斯坦曾称它为幽灵般的超距作用。但在 2026 年，人类终于抓到了它的物理尾巴。’",
+    twistTitle: "45s 情绪转折卡点",
+    twistPrompt: "从微观量子跃迁至宏观宇宙微波背景辐射图，宇宙大爆炸奇点在纳秒内暴胀展开，引力波在四维时空晶格中激荡出剧烈涟漪，时空曲率被超大质量黑洞垂直撕裂。Cosmic inflation, gravitational waves, 4D spacetime fabric warping, documentary cinematography.",
+    twistDialogue: "科学家：‘如果贝尔不等式在全宇宙尺度破缺，那么我们生活的整个时空，可能只是一张全息投影。’",
+    cliffTitle: "55-60s 绝望卡点与付费墙钩子",
+    cliffPrompt: "探测器屏幕上的量子干涉条纹在人类眨眼的百分之一毫秒内突然消失，取而代之的是一段用摩尔斯电码排列的宇宙基底常数。镜头瞬间切入纯黑，滴声留白。mind-bending science mystery, chilling realization, documentary cliffhanger.",
+    audioPrompt: "BGM: 极简纯净合成器音效与脉冲星射电信号采样，深邃空灵。Voicebox: 理性知性磁性解说音（央视纪录片/BBC解说腔）。"
+  }
+};
+
+function showToast(msg) {
+  const el = document.getElementById('toast-msg');
+  if (!el) return;
+  el.textContent = msg || '已复制到剪贴板！';
+  el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), 2200);
+}
+
+window.copyPromptText = function(genreKey) {
+  const data = PROMPT_RECIPES[genreKey];
+  if (!data) return;
+  const fullText = `【蓝果短剧 · ${data.genre} 提示词工程】\\n\\n1. ${data.hookTitle}:\\n${data.hookPrompt}\\n台词: ${data.hookDialogue}\\n\\n2. ${data.twistTitle}:\\n${data.twistPrompt}\\n台词: ${data.twistDialogue}\\n\\n3. ${data.cliffTitle}:\\n${data.cliffPrompt}\\n\\n4. 声音与配乐工程:\\n${data.audioPrompt}`;
+  navigator.clipboard.writeText(fullText).then(() => {
+    showToast('✔ 完整分镜提示词已复制！');
+  }).catch(() => {
+    showToast('✔ 已选择提示词文本');
+  });
+};
+
+function renderPromptLab(genreKey) {
+  const c = document.getElementById('lab-card-content');
+  if (!c) return;
+  const data = PROMPT_RECIPES[genreKey] || PROMPT_RECIPES.xuanhuan;
+  c.innerHTML = `
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div class="lab-block">
+        <div class="lab-lbl">
+          <span>🎯 ${data.hookTitle}</span>
+          <button class="btn-copy-prompt" onclick="navigator.clipboard.writeText('${data.hookPrompt.replace(/'/g, "\\\\'")}'); showToast('✔ 0-3s 提示词已复制');">复制提示词</button>
+        </div>
+        <div class="lab-val"><b>画面指令：</b>${data.hookPrompt}</div>
+        <div style="margin-top:8px;font-size:12.5px;color:var(--amber)"><b>冲突台词：</b>${data.hookDialogue}</div>
+      </div>
+
+      <div class="lab-block">
+        <div class="lab-lbl">
+          <span>⚡ ${data.twistTitle}</span>
+          <button class="btn-copy-prompt" onclick="navigator.clipboard.writeText('${data.twistPrompt.replace(/'/g, "\\\\'")}'); showToast('✔ 45s 提示词已复制');">复制提示词</button>
+        </div>
+        <div class="lab-val"><b>画面指令：</b>${data.twistPrompt}</div>
+        <div style="margin-top:8px;font-size:12.5px;color:var(--amber)"><b>情绪台词：</b>${data.twistDialogue}</div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div class="lab-block">
+        <div class="lab-lbl">
+          <span>🔒 ${data.cliffTitle}</span>
+          <button class="btn-copy-prompt" onclick="navigator.clipboard.writeText('${data.cliffPrompt.replace(/'/g, "\\\\'")}'); showToast('✔ 绝望卡点提示词已复制');">复制提示词</button>
+        </div>
+        <div class="lab-val"><b>画面指令：</b>${data.cliffPrompt}</div>
+        <div style="margin-top:8px;font-size:11.5px;color:var(--muted)">逻辑：在此处精准插入剧集付费墙或引导扫码解锁下一集。</div>
+      </div>
+
+      <div class="lab-block">
+        <div class="lab-lbl">
+          <span>🎙️ 声音克隆与音效参数 (Voicebox / Suno)</span>
+          <button class="btn-copy-prompt" onclick="navigator.clipboard.writeText('${data.audioPrompt.replace(/'/g, "\\\\'")}'); showToast('✔ 音效参数已复制');">复制音效参数</button>
+        </div>
+        <div class="lab-val">${data.audioPrompt}</div>
+      </div>
+
+      <div style="text-align:right">
+        <button class="btn-primary" style="width:100%;justify-content:center" onclick="copyPromptText('${genreKey}')">📋 一键复制该题材整套分镜工程</button>
+      </div>
+    </div>
+  `;
+}
+
+// Lab Tab Click
+document.querySelectorAll('.lab-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.lab-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    renderPromptLab(tab.dataset.genre);
+  });
+});
+renderPromptLab('xuanhuan');
 </script>
 <!-- /SEO · GEO -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@700;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <!-- Analytics -->
-<script src="https://analytics-dashboard-two-blue.vercel.app/tracker.js" defer></script>
+<script src="https://analytics-dashboard-two-blue.vercel.app/tracker.js" defer>
+/* ---------- PROMPT & CONCEPT LAB DATA & LOGIC ---------- */
+const PROMPT_RECIPES = {
+  xuanhuan: {
+    genre: "玄幻 · Eastern Fantasy",
+    hookTitle: "0-3s 黄金冲突钩子",
+    hookPrompt: "东方神话巨擘风格，青云古宗山门天穹被猩红九霄神雷撕裂，引仙石碑剧烈坍塌爆炸，碎石在超强冲击波中漫天激射。少年林渊白发被狂风吹散，单手直指雷劫中心，眼眸中金色太古骨文急速转动。8k resolution, cinematic lighting, volumetric lightning rays, Unreal Engine 5 render, Masterpiece.",
+    hookDialogue: "林渊：‘青云宗欺我三千年无灵根，今日这飞升雷劫——我替诸天万界收了！’",
+    twistTitle: "45s 情绪转折卡点",
+    twistPrompt: "太古骨文从主角掌心蔓延至整条右臂，玄黄凶兽虚影在黑云后睁开千丈金瞳，山门九位化神期长老剑阵当场碎裂，剑刃倒插于大地，飞沙走石与空间扭曲碎片。dramatic chiaroscuro lighting, slow motion 60fps, particle storm, epic scale.",
+    twistDialogue: "传功长老惊骇倒退：‘不可能……他体内封印的不是废脉，那是吞噬上古仙魔的混沌归墟！’",
+    cliffTitle: "55-60s 绝望卡点与付费墙钩子",
+    cliffPrompt: "九霄天劫正上方，虚空中浮现出一只遮蔽整座大陆的冰冷金色眼眸，上苍法旨降临，整片大陆的灵气瞬间归零，主角身后混沌巨兽仰天咆哮。镜头在眼眸凝视主角的瞬间拉成全景黑屏。extreme tension, cliffhanger, glowing runes, dark cinematic depth.",
+    audioPrompt: "BGM: Hans Zimmer 级重度低音铜管咆哮 + 传统古筝急速刮奏，雷鸣与剑器爆裂声。Voicebox: 沉稳低沉撕裂感青年男声，呼吸声清晰。"
+  },
+  mofa: {
+    genre: "魔幻 · Dark Magic & Sorcery",
+    hookTitle: "0-3s 黄金冲突钩子",
+    hookPrompt: "暗黑哥特中世纪大教堂，十二根古老雕花石柱在紫黑色魔法风暴中化为粉末。首席禁咒法师手握龙骨魔杖，杖尖燃烧着不灭冥火，整座王都天空升起猩红六芒星法阵。8k, hyper-detailed, gothic dark fantasy, glowing purple runes, volumetric smoke, ray tracing.",
+    hookDialogue: "法师：‘第七任教皇欺瞒世人三百年，这所谓的圣光之下，囚禁的是整整十万名黑魔法受害者的冤魂！’",
+    twistTitle: "45s 情绪转折卡点",
+    twistPrompt: "圣光审判骑士团的铠甲在一秒内被暗黑触手腐蚀成白灰，主教胸前悬挂的圣杯中流淌出滚烫熔岩，反魔法立场屏障瞬间崩解，暗夜恶魔的双翼从圣母雕像后方轰然展开。extreme cinematic tension, hyper-realistic dark fantasy, dynamic camera orbit.",
+    twistDialogue: "教皇面具脱落：‘你居然敢直视深渊……既然你见到了真正的神明，那就与这座城一起陪葬吧！’",
+    cliffTitle: "55-60s 绝望卡点与付费墙钩子",
+    cliffPrompt: "主角翻开禁忌法典的最终页，法典内伸出无数枯骨抓住他的双臂，全城法力光芒汇入其身躯，王都地面开始垂直向深渊坠落。黑屏卡点。apocalyptic scale, dark magic singularity, dramatic cliffhanger cut.",
+    audioPrompt: "BGM: 哥特女声重唱圣咏与深邃大提琴交织，管风琴轰鸣与火焰呼啸。Voicebox: 磁性沙哑中音，带轻微空间回响。"
+  },
+  scifi: {
+    genre: "科幻 · Hard Sci-Fi",
+    hookTitle: "0-3s 黄金冲突钩子",
+    hookPrompt: "深空柯伊伯带边缘，重型核聚变货运穿梭机剧烈震动，主推进器喷出千米等离子幽蓝尾焰。前方原本空无一物的星图上，突然凭空撕裂出一道长达数万公里的非欧几里得引力裂缝，数千艘外星母舰的几何阴影缓缓浮现。photorealistic 8k, hard sci-fi, Christopher Nolan aesthetic, Interstellar style, dynamic camera shake, cinematic.",
+    hookDialogue: "舰长：‘全舰进入紧急过载状态！这不是自然引力波，是三类文明的维度投射！’",
+    twistTitle: "45s 情绪转折卡点",
+    twistPrompt: "空间站引力环断裂，失重漂浮的工程师隔着强化玻璃注视着太阳在数秒内被戴森球网格锁死变暗，空间站所有全息界面闪烁刺目红光并跳出人类基因灭绝协议。hard sci-fi interior, neon red emergency lights, macro reflection on helmet visor, photorealistic.",
+    twistDialogue: "AI 主脑女声：‘警报，警报：地球总部已于 42 秒前被二维化，全人类仅剩当前舰船 71 名幸存者。’",
+    cliffTitle: "55-60s 绝望卡点与付费墙钩子",
+    cliffPrompt: "主角启动反物质曲率引擎最高过载，穿梭机跃迁入引力透镜中心，前方裂隙中浮现出与地球一模一样但体积庞大万倍的镜面星球。警报声戛然而止，黑屏。Interstellar black hole aesthetic, breathtaking, cliffhanger.",
+    audioPrompt: "BGM: 钛金属撞击与次声波低频震荡，机械警报声，宇宙真空窒息感音效。Voicebox: 沉着冷冽中英双语女声，快速倒计时。"
+  },
+  qihuan: {
+    genre: "奇幻 · High Fantasy & Myth",
+    hookTitle: "0-3s 黄金冲突钩子",
+    hookPrompt: "九万米浮空大陆边缘，巨大古老蒸汽发条齿轮与巨龙肋骨严丝合缝咬合，排气阀喷射出金色蒸汽云海。机械驯兽师踩在飞空艇龙骨尖端，手中缰绳连接着展翅三千米的机械发条青铜巨龙。high fantasy, Hayao Miyazaki meets Steampunk, vibrant colors, epic sky view, golden hour sunlight, 8k render.",
+    hookDialogue: "驯兽师：‘只要发条还在转动，天穹诸神的浮空岛就别想踏入人间一步！’",
+    twistTitle: "45s 情绪转折卡点",
+    twistPrompt: "云海深处浮现出一座由纯净光晶体构建的天空圣城，无数光刃天使从圣城城门倾泻而下，发条巨龙的动力核心在光刃轰击下出现裂缝，蓝色源石能量液如瀑布倾泻。epic aerial battle, dynamic depth of field, anime cinematic masterpiece.",
+    twistDialogue: "天界审判官：‘凡人用破铜烂铁拼凑的心脏，也敢自称能载动诸神之怒？’",
+    cliffTitle: "55-60s 绝望卡点与付费墙钩子",
+    cliffPrompt: "驯兽师扯断自身源石神经接驳线，将其直接插进巨龙心脏，整条机械巨龙爆发出刺目超新星蓝焰，向天空圣城主炮口迎面撞去。巨响前瞬间黑屏。explosive climax, dramatic freeze frame, epic cliffhanger.",
+    audioPrompt: "BGM: 激昂管弦乐交响与凯尔特风笛，蒸汽齿轮咔哒声与龙啸。Voicebox: 热血高亢少年音，情绪饱满。"
+  },
+  kepu: {
+    genre: "科普 · Deep Science Explanatory",
+    hookTitle: "0-3s 黄金冲突钩子",
+    hookPrompt: "微观量子尺度极限放大，两个自旋相反的纠缠电子在普朗克尺度光晶格中高速自旋，虚光子如量子雨般在两个粒子间跳跃。镜头以超光速穿透星系尺度拉远，展现相隔4光年的两个粒子瞬间同时改变偏振态。scientific visualization, quantum entanglement, Planck scale, hyper-realistic scientific documentary, BBC / Cosmos style, 8k render.",
+    hookDialogue: "旁白：‘爱因斯坦曾称它为幽灵般的超距作用。但在 2026 年，人类终于抓到了它的物理尾巴。’",
+    twistTitle: "45s 情绪转折卡点",
+    twistPrompt: "从微观量子跃迁至宏观宇宙微波背景辐射图，宇宙大爆炸奇点在纳秒内暴胀展开，引力波在四维时空晶格中激荡出剧烈涟漪，时空曲率被超大质量黑洞垂直撕裂。Cosmic inflation, gravitational waves, 4D spacetime fabric warping, documentary cinematography.",
+    twistDialogue: "科学家：‘如果贝尔不等式在全宇宙尺度破缺，那么我们生活的整个时空，可能只是一张全息投影。’",
+    cliffTitle: "55-60s 绝望卡点与付费墙钩子",
+    cliffPrompt: "探测器屏幕上的量子干涉条纹在人类眨眼的百分之一毫秒内突然消失，取而代之的是一段用摩尔斯电码排列的宇宙基底常数。镜头瞬间切入纯黑，滴声留白。mind-bending science mystery, chilling realization, documentary cliffhanger.",
+    audioPrompt: "BGM: 极简纯净合成器音效与脉冲星射电信号采样，深邃空灵。Voicebox: 理性知性磁性解说音（央视纪录片/BBC解说腔）。"
+  }
+};
+
+function showToast(msg) {
+  const el = document.getElementById('toast-msg');
+  if (!el) return;
+  el.textContent = msg || '已复制到剪贴板！';
+  el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), 2200);
+}
+
+window.copyPromptText = function(genreKey) {
+  const data = PROMPT_RECIPES[genreKey];
+  if (!data) return;
+  const fullText = `【蓝果短剧 · ${data.genre} 提示词工程】\\n\\n1. ${data.hookTitle}:\\n${data.hookPrompt}\\n台词: ${data.hookDialogue}\\n\\n2. ${data.twistTitle}:\\n${data.twistPrompt}\\n台词: ${data.twistDialogue}\\n\\n3. ${data.cliffTitle}:\\n${data.cliffPrompt}\\n\\n4. 声音与配乐工程:\\n${data.audioPrompt}`;
+  navigator.clipboard.writeText(fullText).then(() => {
+    showToast('✔ 完整分镜提示词已复制！');
+  }).catch(() => {
+    showToast('✔ 已选择提示词文本');
+  });
+};
+
+function renderPromptLab(genreKey) {
+  const c = document.getElementById('lab-card-content');
+  if (!c) return;
+  const data = PROMPT_RECIPES[genreKey] || PROMPT_RECIPES.xuanhuan;
+  c.innerHTML = `
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div class="lab-block">
+        <div class="lab-lbl">
+          <span>🎯 ${data.hookTitle}</span>
+          <button class="btn-copy-prompt" onclick="navigator.clipboard.writeText('${data.hookPrompt.replace(/'/g, "\\\\'")}'); showToast('✔ 0-3s 提示词已复制');">复制提示词</button>
+        </div>
+        <div class="lab-val"><b>画面指令：</b>${data.hookPrompt}</div>
+        <div style="margin-top:8px;font-size:12.5px;color:var(--amber)"><b>冲突台词：</b>${data.hookDialogue}</div>
+      </div>
+
+      <div class="lab-block">
+        <div class="lab-lbl">
+          <span>⚡ ${data.twistTitle}</span>
+          <button class="btn-copy-prompt" onclick="navigator.clipboard.writeText('${data.twistPrompt.replace(/'/g, "\\\\'")}'); showToast('✔ 45s 提示词已复制');">复制提示词</button>
+        </div>
+        <div class="lab-val"><b>画面指令：</b>${data.twistPrompt}</div>
+        <div style="margin-top:8px;font-size:12.5px;color:var(--amber)"><b>情绪台词：</b>${data.twistDialogue}</div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div class="lab-block">
+        <div class="lab-lbl">
+          <span>🔒 ${data.cliffTitle}</span>
+          <button class="btn-copy-prompt" onclick="navigator.clipboard.writeText('${data.cliffPrompt.replace(/'/g, "\\\\'")}'); showToast('✔ 绝望卡点提示词已复制');">复制提示词</button>
+        </div>
+        <div class="lab-val"><b>画面指令：</b>${data.cliffPrompt}</div>
+        <div style="margin-top:8px;font-size:11.5px;color:var(--muted)">逻辑：在此处精准插入剧集付费墙或引导扫码解锁下一集。</div>
+      </div>
+
+      <div class="lab-block">
+        <div class="lab-lbl">
+          <span>🎙️ 声音克隆与音效参数 (Voicebox / Suno)</span>
+          <button class="btn-copy-prompt" onclick="navigator.clipboard.writeText('${data.audioPrompt.replace(/'/g, "\\\\'")}'); showToast('✔ 音效参数已复制');">复制音效参数</button>
+        </div>
+        <div class="lab-val">${data.audioPrompt}</div>
+      </div>
+
+      <div style="text-align:right">
+        <button class="btn-primary" style="width:100%;justify-content:center" onclick="copyPromptText('${genreKey}')">📋 一键复制该题材整套分镜工程</button>
+      </div>
+    </div>
+  `;
+}
+
+// Lab Tab Click
+document.querySelectorAll('.lab-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.lab-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    renderPromptLab(tab.dataset.genre);
+  });
+});
+renderPromptLab('xuanhuan');
+</script>
 <style>
 :root{
   --bg:#060913; --bg2:#0a0f1f; --surface:#0d1428; --line:rgba(110,168,255,.14);
@@ -311,6 +740,42 @@ footer{border-top:1px solid var(--line);padding:44px 0 60px;color:var(--muted);f
 /* reveal */
 .rv{opacity:0;transform:translateY(26px);transition:opacity .7s,transform .7s}
 .rv.on{opacity:1;transform:none}
+
+/* Prompt Lab */
+.prompt-lab-section{padding:54px 0 64px;background:var(--bg);border-top:1px solid var(--line)}
+.lab-tabs{display:flex;gap:10px;margin:24px 0 20px;flex-wrap:wrap}
+.lab-tab{padding:9px 18px;border-radius:8px;border:1px solid var(--line);background:rgba(255,255,255,0.03);color:var(--muted);cursor:pointer;font-size:13px;font-weight:600;transition:.2s}
+.lab-tab:hover{border-color:var(--blue);color:var(--text)}
+.lab-tab.active{background:rgba(110,168,255,0.15);border-color:var(--blue);color:var(--text)}
+.lab-card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:24px;display:grid;grid-template-columns:1fr 1fr;gap:24px}
+@media(max-width:860px){.lab-card{grid-template-columns:1fr}}
+.lab-block{background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:16px}
+.lab-lbl{font-family:var(--mono);font-size:11px;color:var(--blue);letter-spacing:.12em;margin-bottom:8px;display:flex;align-items:center;justify-content:space-between}
+.lab-val{font-size:13px;color:#cbd5e1;line-height:1.6}
+.btn-copy-prompt{background:rgba(110,168,255,0.15);border:1px solid var(--blue);color:var(--blue2);border-radius:6px;padding:4px 10px;font-size:11px;cursor:pointer;transition:.2s}
+.btn-copy-prompt:hover{background:var(--blue);color:#060a14}
+
+/* Commercial Packages */
+.commercial-section{padding:60px 0 70px;background:var(--bg2);border-top:1px solid var(--line)}
+.comm-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:28px}
+.comm-card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:28px 24px;display:flex;flex-direction:column;justify-content:space-between;transition:.3s}
+.comm-card:hover{border-color:var(--blue);transform:translateY(-3px);box-shadow:0 12px 30px rgba(0,0,0,0.5)}
+.comm-card.featured{border-color:var(--amber);background:linear-gradient(180deg,rgba(255,180,84,0.08) 0%,var(--surface) 100%)}
+.comm-badge{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:var(--amber);margin-bottom:10px;font-weight:700}
+.comm-price{font-family:var(--mono);font-size:28px;font-weight:800;color:#fff;margin:12px 0 8px}
+.comm-price span{font-size:14px;color:var(--muted);font-weight:400}
+.comm-list{list-style:none;margin:16px 0 24px;font-size:13px;color:var(--muted);line-height:1.8}
+.comm-list li::before{content:'✔ ';color:#10b981;font-weight:bold}
+.btn-comm{width:100%;padding:12px;border-radius:8px;font-weight:700;font-size:13.5px;border:none;cursor:pointer;transition:.2s;text-align:center}
+.btn-comm.primary{background:linear-gradient(135deg,#6ea8ff,#3b82f6);color:#060a14}
+.btn-comm.primary:hover{box-shadow:0 0 16px rgba(110,168,255,.5)}
+.btn-comm.featured-btn{background:linear-gradient(135deg,#ffb454,#f59e0b);color:#060a14}
+.btn-comm.featured-btn:hover{box-shadow:0 0 16px rgba(255,180,84,.5)}
+
+/* Toast */
+.toast-msg{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(40px);background:rgba(15,23,42,0.95);border:1px solid #10b981;color:#10b981;padding:10px 22px;border-radius:30px;font-size:13px;font-weight:600;box-shadow:0 10px 30px rgba(0,0,0,0.8);z-index:99999;opacity:0;pointer-events:none;transition:all .3s cubic-bezier(.16,1,.3,1)}
+.toast-msg.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
 </style>
 <meta property="og:image" content="https://bluefruit.psyverse.fun/og.png" />
 <meta property="og:image:width" content="1200" />
@@ -327,7 +792,7 @@ footer{border-top:1px solid var(--line);padding:44px 0 60px;color:var(--muted);f
       蓝果短剧 <small>AI-NATIVE&nbsp;STUDIO</small>
     </a>
     <nav>
-      <a href="#genres">类型</a><a href="#cinema">在线展映厅</a><a href="#library">片库</a><a href="#pipeline">制作管线</a><a href="#gpu-fleet">12节点GPU</a><a href="#cost">成本</a><a href="https://ai-for-money.psyverse.fun" target="_blank">搞钱平台 ↗</a><a href="https://psyverse.fun/payment" target="_blank">统一收银 ↗</a>
+      <a href="#genres">五大类型</a><a href="#prompt-lab">SOP提示词</a><a href="#cinema">在线展映厅</a><a href="#library">片库</a><a href="#pipeline">制作管线</a><a href="#gpu-fleet">12节点GPU</a><a href="#commercial">商业定制</a><a href="#cost">成本</a><a href="https://ai-for-money.psyverse.fun" target="_blank">搞钱平台 ↗</a><a href="https://psyverse.fun/payment" target="_blank">统一收银 ↗</a>
     </nav>
   </div>
 </header>
@@ -393,6 +858,27 @@ footer{border-top:1px solid var(--line);padding:44px 0 60px;color:var(--muted);f
         <p>宇宙大爆炸、微观量子纠缠、硬核物理与前沿技术解密。真人摄影机根本无法抵达的宏观时空与微观粒子，AI 动态运镜秒级精准呈现。</p>
         <div class="cost"><s>专业纪录片 ¥15–30万 / 集</s> → 蓝果 <b>¥0.4万 / 集</b></div>
       </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- 01.5 PROMPT & CONCEPT LAB -->
+<section id="prompt-lab" class="prompt-lab-section">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="sec-num">01.5</span><h2>SOP 剧本与分镜提示词实验室</h2><span class="sec-en">Volcano-SOP Prompt & Concept Matrix</span></div>
+    <p class="sec-sub rv">五大核心题材标准工业化配方：黄金 3 秒立冲突、45 秒情绪反转、集尾绝望卡点与多语言出海音效参数。点击标签实时切换现场 Prompt 并一键复制。</p>
+
+    <div class="lab-tabs rv" id="lab-tabs">
+      <button class="lab-tab active" data-genre="xuanhuan">🔮 玄幻 · Eastern Fantasy</button>
+      <button class="lab-tab" data-genre="mofa">⚡ 魔幻 · Dark Magic</button>
+      <button class="lab-tab" data-genre="scifi">🚀 科幻 · Hard Sci-Fi</button>
+      <button class="lab-tab" data-genre="qihuan">🐉 奇幻 · High Fantasy</button>
+      <button class="lab-tab" data-genre="kepu">⚛️ 科普 · Deep Science</button>
+    </div>
+
+    <div class="lab-card rv" id="lab-card-content">
+      <!-- Dynamically filled by JS -->
     </div>
   </div>
 </section>
@@ -611,6 +1097,67 @@ footer{border-top:1px solid var(--line);padding:44px 0 60px;color:var(--muted);f
   </div>
 </section>
 
+
+<!-- 08 COMMERCIAL & FLEET PACKAGES -->
+<section id="commercial" class="commercial-section">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="sec-num">08</span><h2>商业定制与算力代投服务</h2><span class="sec-en">Commercial Production & Fleet Deployment</span></div>
+    <p class="sec-sub rv">基于 12 节点 GPU 集群工业底座，蓝果短剧厂牌向创作者、MCN 及品牌方开放全流程 AI 原生短剧制作与私有化算力部署。</p>
+
+    <div class="comm-grid rv">
+      <div class="comm-card">
+        <div>
+          <div class="comm-badge">STARTER PACK</div>
+          <h3 style="font-family:'Noto Serif SC',serif;font-size:20px">单集爆款体验装</h3>
+          <p style="font-size:13px;color:var(--muted);margin-top:4px">验证题材市场反馈，极速上线测试</p>
+          <div class="comm-price">¥99 <span>/ $29 USD</span></div>
+          <ul class="comm-list">
+            <li>完整黄金 3 秒 + 45 秒高燃短剧剧本</li>
+            <li>4 组 4K 高保真角色一致性分镜原画</li>
+            <li>Voicebox 情绪克隆配音 + Whisper 时间戳字幕</li>
+            <li>FFmpeg 确定性混剪工程源码</li>
+          </ul>
+        </div>
+        <button class="btn-comm primary" onclick="document.getElementById('pay-modal').classList.add('open')">立即测试体验</button>
+      </div>
+
+      <div class="comm-card featured">
+        <div>
+          <div class="comm-badge">MOST POPULAR · 商业短剧 MVP</div>
+          <h3 style="font-family:'Noto Serif SC',serif;font-size:20px">10 集全流程短剧交付</h3>
+          <p style="font-size:13px;color:var(--muted);margin-top:4px">专供全网短剧出海与独立自贩机变现</p>
+          <div class="comm-price">¥4,999 <span>/ $699 USD</span></div>
+          <ul class="comm-list">
+            <li>10 集完整连贯剧集（每集 60-90 秒）</li>
+            <li>玄幻/科幻/魔幻/奇幻/科普 5 选 1 定制世界观</li>
+            <li>多语言（中/英/西三语）本土化出海字幕</li>
+            <li>12 节点 GPU 原生 4K/60FPS 渲染母带</li>
+            <li>无水印原片交付 + 0% 抽成自贩机部署指导</li>
+          </ul>
+        </div>
+        <button class="btn-comm featured-btn" onclick="document.getElementById('pay-modal').classList.add('open')">定制整季短剧</button>
+      </div>
+
+      <div class="comm-card">
+        <div>
+          <div class="comm-badge">ENTERPRISE · 算力私有化</div>
+          <h3 style="font-family:'Noto Serif SC',serif;font-size:20px">12 节点 GPU 工业集群部署</h3>
+          <p style="font-size:13px;color:var(--muted);margin-top:4px">打造属于你自己的 AI 短剧一人工业联合体</p>
+          <div class="comm-price">¥19,999 <span>/ $2,999 USD</span></div>
+          <ul class="comm-list">
+            <li>12 节点分布式编排源码 (gpu_fleet_orchestrator)</li>
+            <li>角色一致性 LoRA 训练与自动分发流水线</li>
+            <li>Voicebox + Suno 声音引擎本地部署方案</li>
+            <li>全网 9 大平台全自动分发与数字自贩机系统</li>
+            <li>1v1 私享架构诊断 (2小时) + 终身版本迭代</li>
+          </ul>
+        </div>
+        <button class="btn-comm primary" onclick="document.getElementById('pay-modal').classList.add('open')">专属架构部署</button>
+      </div>
+    </div>
+  </div>
+</section>
+
 </main>
 
 <footer>
@@ -693,10 +1240,13 @@ footer{border-top:1px solid var(--line);padding:44px 0 60px;color:var(--muted);f
 <script>
 /* ---------- data ---------- */
 const GENRES = {
-  xh:  { name:'玄幻',   en:'Fantasy',      hue:'#ffb454', c1:'#1a1608', c2:'#3a2c0c' },
-  sf:  { name:'科幻',   en:'Sci-Fi',       hue:'#6ea8ff', c1:'#080d1c', c2:'#12224a' },
-  gz:  { name:'规则怪谈', en:'Rule Horror', hue:'#ff5c7a', c1:'#1a0810', c2:'#40122a' },
-  wx:  { name:'无限流',  en:'Loop',         hue:'#a78bfa', c1:'#0f0a1c', c2:'#241a4a' },
+  xh:  { name:'玄幻',   en:'Eastern Fantasy', hue:'#ffb454', c1:'#1a1608', c2:'#3a2c0c' },
+  mh:  { name:'魔幻',   en:'Dark Magic',      hue:'#c084fc', c1:'#150a24', c2:'#2e104d' },
+  sf:  { name:'科幻',   en:'Hard Sci-Fi',     hue:'#6ea8ff', c1:'#080d1c', c2:'#12224a' },
+  qh:  { name:'奇幻',   en:'High Fantasy',    hue:'#34d399', c1:'#061b14', c2:'#0d3829' },
+  kp:  { name:'科普',   en:'Deep Science',    hue:'#38bdf8', c1:'#061624', c2:'#0c2c47' },
+  gz:  { name:'怪谈',   en:'Rule Horror',     hue:'#ff5c7a', c1:'#1a0810', c2:'#40122a' },
+  wx:  { name:'无限流', en:'Loop System',     hue:'#a78bfa', c1:'#0f0a1c', c2:'#241a4a' },
 };
 
 const SHOWS = [
@@ -1058,6 +1608,150 @@ document.querySelectorAll('.pl-item').forEach(item => {
     if (nowDesc) nowDesc.textContent = desc || '';
   });
 });
+
+/* ---------- PROMPT & CONCEPT LAB DATA & LOGIC ---------- */
+const PROMPT_RECIPES = {
+  xuanhuan: {
+    genre: "玄幻 · Eastern Fantasy",
+    hookTitle: "0-3s 黄金冲突钩子",
+    hookPrompt: "东方神话巨擘风格，青云古宗山门天穹被猩红九霄神雷撕裂，引仙石碑剧烈坍塌爆炸，碎石在超强冲击波中漫天激射。少年林渊白发被狂风吹散，单手直指雷劫中心，眼眸中金色太古骨文急速转动。8k resolution, cinematic lighting, volumetric lightning rays, Unreal Engine 5 render, Masterpiece.",
+    hookDialogue: "林渊：‘青云宗欺我三千年无灵根，今日这飞升雷劫——我替诸天万界收了！’",
+    twistTitle: "45s 情绪转折卡点",
+    twistPrompt: "太古骨文从主角掌心蔓延至整条右臂，玄黄凶兽虚影在黑云后睁开千丈金瞳，山门九位化神期长老剑阵当场碎裂，剑刃倒插于大地，飞沙走石与空间扭曲碎片。dramatic chiaroscuro lighting, slow motion 60fps, particle storm, epic scale.",
+    twistDialogue: "传功长老惊骇倒退：‘不可能……他体内封印的不是废脉，那是吞噬上古仙魔的混沌归墟！’",
+    cliffTitle: "55-60s 绝望卡点与付费墙钩子",
+    cliffPrompt: "九霄天劫正上方，虚空中浮现出一只遮蔽整座大陆的冰冷金色眼眸，上苍法旨降临，整片大陆的灵气瞬间归零，主角身后混沌巨兽仰天咆哮。镜头在眼眸凝视主角的瞬间拉成全景黑屏。extreme tension, cliffhanger, glowing runes, dark cinematic depth.",
+    audioPrompt: "BGM: Hans Zimmer 级重度低音铜管咆哮 + 传统古筝急速刮奏，雷鸣与剑器爆裂声。Voicebox: 沉稳低沉撕裂感青年男声，呼吸声清晰。"
+  },
+  mofa: {
+    genre: "魔幻 · Dark Magic & Sorcery",
+    hookTitle: "0-3s 黄金冲突钩子",
+    hookPrompt: "暗黑哥特中世纪大教堂，十二根古老雕花石柱在紫黑色魔法风暴中化为粉末。首席禁咒法师手握龙骨魔杖，杖尖燃烧着不灭冥火，整座王都天空升起猩红六芒星法阵。8k, hyper-detailed, gothic dark fantasy, glowing purple runes, volumetric smoke, ray tracing.",
+    hookDialogue: "法师：‘第七任教皇欺瞒世人三百年，这所谓的圣光之下，囚禁的是整整十万名黑魔法受害者的冤魂！’",
+    twistTitle: "45s 情绪转折卡点",
+    twistPrompt: "圣光审判骑士团的铠甲在一秒内被暗黑触手腐蚀成白灰，主教胸前悬挂的圣杯中流淌出滚烫熔岩，反魔法立场屏障瞬间崩解，暗夜恶魔的双翼从圣母雕像后方轰然展开。extreme cinematic tension, hyper-realistic dark fantasy, dynamic camera orbit.",
+    twistDialogue: "教皇面具脱落：‘你居然敢直视深渊……既然你见到了真正的神明，那就与这座城一起陪葬吧！’",
+    cliffTitle: "55-60s 绝望卡点与付费墙钩子",
+    cliffPrompt: "主角翻开禁忌法典的最终页，法典内伸出无数枯骨抓住他的双臂，全城法力光芒汇入其身躯，王都地面开始垂直向深渊坠落。黑屏卡点。apocalyptic scale, dark magic singularity, dramatic cliffhanger cut.",
+    audioPrompt: "BGM: 哥特女声重唱圣咏与深邃大提琴交织，管风琴轰鸣与火焰呼啸。Voicebox: 磁性沙哑中音，带轻微空间回响。"
+  },
+  scifi: {
+    genre: "科幻 · Hard Sci-Fi",
+    hookTitle: "0-3s 黄金冲突钩子",
+    hookPrompt: "深空柯伊伯带边缘，重型核聚变货运穿梭机剧烈震动，主推进器喷出千米等离子幽蓝尾焰。前方原本空无一物的星图上，突然凭空撕裂出一道长达数万公里的非欧几里得引力裂缝，数千艘外星母舰的几何阴影缓缓浮现。photorealistic 8k, hard sci-fi, Christopher Nolan aesthetic, Interstellar style, dynamic camera shake, cinematic.",
+    hookDialogue: "舰长：‘全舰进入紧急过载状态！这不是自然引力波，是三类文明的维度投射！’",
+    twistTitle: "45s 情绪转折卡点",
+    twistPrompt: "空间站引力环断裂，失重漂浮的工程师隔着强化玻璃注视着太阳在数秒内被戴森球网格锁死变暗，空间站所有全息界面闪烁刺目红光并跳出人类基因灭绝协议。hard sci-fi interior, neon red emergency lights, macro reflection on helmet visor, photorealistic.",
+    twistDialogue: "AI 主脑女声：‘警报，警报：地球总部已于 42 秒前被二维化，全人类仅剩当前舰船 71 名幸存者。’",
+    cliffTitle: "55-60s 绝望卡点与付费墙钩子",
+    cliffPrompt: "主角启动反物质曲率引擎最高过载，穿梭机跃迁入引力透镜中心，前方裂隙中浮现出与地球一模一样但体积庞大万倍的镜面星球。警报声戛然而止，黑屏。Interstellar black hole aesthetic, breathtaking, cliffhanger.",
+    audioPrompt: "BGM: 钛金属撞击与次声波低频震荡，机械警报声，宇宙真空窒息感音效。Voicebox: 沉着冷冽中英双语女声，快速倒计时。"
+  },
+  qihuan: {
+    genre: "奇幻 · High Fantasy & Myth",
+    hookTitle: "0-3s 黄金冲突钩子",
+    hookPrompt: "九万米浮空大陆边缘，巨大古老蒸汽发条齿轮与巨龙肋骨严丝合缝咬合，排气阀喷射出金色蒸汽云海。机械驯兽师踩在飞空艇龙骨尖端，手中缰绳连接着展翅三千米的机械发条青铜巨龙。high fantasy, Hayao Miyazaki meets Steampunk, vibrant colors, epic sky view, golden hour sunlight, 8k render.",
+    hookDialogue: "驯兽师：‘只要发条还在转动，天穹诸神的浮空岛就别想踏入人间一步！’",
+    twistTitle: "45s 情绪转折卡点",
+    twistPrompt: "云海深处浮现出一座由纯净光晶体构建的天空圣城，无数光刃天使从圣城城门倾泻而下，发条巨龙的动力核心在光刃轰击下出现裂缝，蓝色源石能量液如瀑布倾泻。epic aerial battle, dynamic depth of field, anime cinematic masterpiece.",
+    twistDialogue: "天界审判官：‘凡人用破铜烂铁拼凑的心脏，也敢自称能载动诸神之怒？’",
+    cliffTitle: "55-60s 绝望卡点与付费墙钩子",
+    cliffPrompt: "驯兽师扯断自身源石神经接驳线，将其直接插进巨龙心脏，整条机械巨龙爆发出刺目超新星蓝焰，向天空圣城主炮口迎面撞去。巨响前瞬间黑屏。explosive climax, dramatic freeze frame, epic cliffhanger.",
+    audioPrompt: "BGM: 激昂管弦乐交响与凯尔特风笛，蒸汽齿轮咔哒声与龙啸。Voicebox: 热血高亢少年音，情绪饱满。"
+  },
+  kepu: {
+    genre: "科普 · Deep Science Explanatory",
+    hookTitle: "0-3s 黄金冲突钩子",
+    hookPrompt: "微观量子尺度极限放大，两个自旋相反的纠缠电子在普朗克尺度光晶格中高速自旋，虚光子如量子雨般在两个粒子间跳跃。镜头以超光速穿透星系尺度拉远，展现相隔4光年的两个粒子瞬间同时改变偏振态。scientific visualization, quantum entanglement, Planck scale, hyper-realistic scientific documentary, BBC / Cosmos style, 8k render.",
+    hookDialogue: "旁白：‘爱因斯坦曾称它为幽灵般的超距作用。但在 2026 年，人类终于抓到了它的物理尾巴。’",
+    twistTitle: "45s 情绪转折卡点",
+    twistPrompt: "从微观量子跃迁至宏观宇宙微波背景辐射图，宇宙大爆炸奇点在纳秒内暴胀展开，引力波在四维时空晶格中激荡出剧烈涟漪，时空曲率被超大质量黑洞垂直撕裂。Cosmic inflation, gravitational waves, 4D spacetime fabric warping, documentary cinematography.",
+    twistDialogue: "科学家：‘如果贝尔不等式在全宇宙尺度破缺，那么我们生活的整个时空，可能只是一张全息投影。’",
+    cliffTitle: "55-60s 绝望卡点与付费墙钩子",
+    cliffPrompt: "探测器屏幕上的量子干涉条纹在人类眨眼的百分之一毫秒内突然消失，取而代之的是一段用摩尔斯电码排列的宇宙基底常数。镜头瞬间切入纯黑，滴声留白。mind-bending science mystery, chilling realization, documentary cliffhanger.",
+    audioPrompt: "BGM: 极简纯净合成器音效与脉冲星射电信号采样，深邃空灵。Voicebox: 理性知性磁性解说音（央视纪录片/BBC解说腔）。"
+  }
+};
+
+function showToast(msg) {
+  const el = document.getElementById('toast-msg');
+  if (!el) return;
+  el.textContent = msg || '已复制到剪贴板！';
+  el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), 2200);
+}
+
+window.copyPromptText = function(genreKey) {
+  const data = PROMPT_RECIPES[genreKey];
+  if (!data) return;
+  const fullText = `【蓝果短剧 · ${data.genre} 提示词工程】\\n\\n1. ${data.hookTitle}:\\n${data.hookPrompt}\\n台词: ${data.hookDialogue}\\n\\n2. ${data.twistTitle}:\\n${data.twistPrompt}\\n台词: ${data.twistDialogue}\\n\\n3. ${data.cliffTitle}:\\n${data.cliffPrompt}\\n\\n4. 声音与配乐工程:\\n${data.audioPrompt}`;
+  navigator.clipboard.writeText(fullText).then(() => {
+    showToast('✔ 完整分镜提示词已复制！');
+  }).catch(() => {
+    showToast('✔ 已选择提示词文本');
+  });
+};
+
+function renderPromptLab(genreKey) {
+  const c = document.getElementById('lab-card-content');
+  if (!c) return;
+  const data = PROMPT_RECIPES[genreKey] || PROMPT_RECIPES.xuanhuan;
+  c.innerHTML = `
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div class="lab-block">
+        <div class="lab-lbl">
+          <span>🎯 ${data.hookTitle}</span>
+          <button class="btn-copy-prompt" onclick="navigator.clipboard.writeText('${data.hookPrompt.replace(/'/g, "\\\\'")}'); showToast('✔ 0-3s 提示词已复制');">复制提示词</button>
+        </div>
+        <div class="lab-val"><b>画面指令：</b>${data.hookPrompt}</div>
+        <div style="margin-top:8px;font-size:12.5px;color:var(--amber)"><b>冲突台词：</b>${data.hookDialogue}</div>
+      </div>
+
+      <div class="lab-block">
+        <div class="lab-lbl">
+          <span>⚡ ${data.twistTitle}</span>
+          <button class="btn-copy-prompt" onclick="navigator.clipboard.writeText('${data.twistPrompt.replace(/'/g, "\\\\'")}'); showToast('✔ 45s 提示词已复制');">复制提示词</button>
+        </div>
+        <div class="lab-val"><b>画面指令：</b>${data.twistPrompt}</div>
+        <div style="margin-top:8px;font-size:12.5px;color:var(--amber)"><b>情绪台词：</b>${data.twistDialogue}</div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div class="lab-block">
+        <div class="lab-lbl">
+          <span>🔒 ${data.cliffTitle}</span>
+          <button class="btn-copy-prompt" onclick="navigator.clipboard.writeText('${data.cliffPrompt.replace(/'/g, "\\\\'")}'); showToast('✔ 绝望卡点提示词已复制');">复制提示词</button>
+        </div>
+        <div class="lab-val"><b>画面指令：</b>${data.cliffPrompt}</div>
+        <div style="margin-top:8px;font-size:11.5px;color:var(--muted)">逻辑：在此处精准插入剧集付费墙或引导扫码解锁下一集。</div>
+      </div>
+
+      <div class="lab-block">
+        <div class="lab-lbl">
+          <span>🎙️ 声音克隆与音效参数 (Voicebox / Suno)</span>
+          <button class="btn-copy-prompt" onclick="navigator.clipboard.writeText('${data.audioPrompt.replace(/'/g, "\\\\'")}'); showToast('✔ 音效参数已复制');">复制音效参数</button>
+        </div>
+        <div class="lab-val">${data.audioPrompt}</div>
+      </div>
+
+      <div style="text-align:right">
+        <button class="btn-primary" style="width:100%;justify-content:center" onclick="copyPromptText('${genreKey}')">📋 一键复制该题材整套分镜工程</button>
+      </div>
+    </div>
+  `;
+}
+
+// Lab Tab Click
+document.querySelectorAll('.lab-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.lab-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    renderPromptLab(tab.dataset.genre);
+  });
+});
+renderPromptLab('xuanhuan');
 </script>
+<div id="toast-msg" class="toast-msg">已复制到剪贴板！</div>
 </body>
 </html>
