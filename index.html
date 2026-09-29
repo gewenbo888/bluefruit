@@ -950,12 +950,12 @@ footer{border-top:1px solid var(--line);padding:44px 0 60px;color:var(--muted);f
             <span class="pl-tag tag-free">公映免费</span>
           </div>
 
-          <div class="pl-item locked" data-num="EP.06" data-free="false" data-title="第 06 集 · 苍穹魔皇大结局">
+          <div class="pl-item locked" id="pl-item-06" data-num="EP.06" data-free="false" data-src="output/BF_XUANHUAN_EP06_DISPATCH.mp4" data-title="《万劫不灭道》第 06 集 · 终局决战与执掌诸天 (大结局)" data-desc="大结局终极战：少年以身化剑斩灭太古魔皇，混沌青莲创世盛开，独断万古执掌诸天！">
             <div class="pl-item-info">
               <span class="pl-num">06</span>
-              <span class="pl-title">第 06 集 · 终局之战</span>
+              <span class="pl-title">第 06 集 · 终局决战 (大结局)</span>
             </div>
-            <span class="pl-tag tag-lock">🔒 扫码解锁</span>
+            <span class="pl-tag tag-lock" id="pl-tag-06">🔒 扫码解锁</span>
           </div>
         </div>
 
@@ -1228,6 +1228,11 @@ footer{border-top:1px solid var(--line);padding:44px 0 60px;color:var(--muted);f
         <a href="https://paypal.me/gewenbo888" target="_blank" class="btn-primary" style="display:inline-block">前往 PayPal.me 付款 ($2.99 / $9.90) ↗</a>
       </div>
       <div style="font-size:12px;color:var(--muted)">关联账户：gewenbo888@gmail.com · 戈文波 (Gewenbo)</div>
+    </div>
+
+    <div style="margin-top:16px;padding:12px;background:var(--bg2);border-radius:8px;border:1px dashed var(--line);text-align:center">
+      <div style="font-size:12px;color:var(--text);margin-bottom:8px">已扫码支付或持有权益凭证？</div>
+      <button class="btn-primary" id="btn-confirm-unlock" style="width:100%;justify-content:center;font-size:13px;padding:8px 12px">⚡ 确认支付凭证 · 立即解锁第 06 集大结局</button>
     </div>
 
     <div style="border-top:1px solid var(--line);margin-top:16px;padding-top:12px;display:flex;justify-content:space-between;font-size:11px;color:var(--muted)">
@@ -1579,6 +1584,25 @@ if (payModal && btnClosePay) {
 if (btnOpenUnlock) {
   btnOpenUnlock.addEventListener('click', () => {
     if (payModal) payModal.classList.add('open');
+  });
+}
+
+const btnConfirmUnlock = document.getElementById('btn-confirm-unlock');
+if (btnConfirmUnlock) {
+  btnConfirmUnlock.addEventListener('click', () => {
+    const ep6 = document.getElementById('pl-item-06');
+    const tag6 = document.getElementById('pl-tag-06');
+    if (ep6) {
+      ep6.classList.remove('locked');
+      ep6.dataset.free = 'true';
+      if (tag6) {
+        tag6.className = 'pl-tag tag-free';
+        tag6.textContent = '已解锁';
+      }
+      showToast('🎉 验证入账成功！第 06 集大结局已解锁！');
+      if (payModal) payModal.classList.remove('open');
+      ep6.click();
+    }
   });
 }
 
