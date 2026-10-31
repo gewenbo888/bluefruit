@@ -27,9 +27,9 @@
  document.querySelector('.episodes').addEventListener('click', e => { const b = e.target.closest('[data-episode]'); if (b && catalog) selectEpisode(Number(b.dataset.episode), true); });
  $('#hero-play').addEventListener('click', () => { if (catalog) selectEpisode(episode, true); });
  const genres = {xh:'玄幻',sf:'科幻',gz:'怪谈',wx:'无限流'};
- function poster(item, index) {
-  const color = {xh:'#cfb182',sf:'#91b5f6',gz:'#c38e9b',wx:'#ad9bcf'}[item.g];
-  return `<svg viewBox="0 0 480 210" aria-hidden="true"><rect width="480" height="210" fill="#151e2b"/><g fill="none" stroke="${color}" opacity=".65"><circle cx="270" cy="105" r="66"/><ellipse cx="270" cy="105" rx="150" ry="28" transform="rotate(-${15+index*2} 270 105)"/><path d="M30 175h420M270 15v180" opacity=".25"/></g><circle cx="${345-index*3}" cy="64" r="4" fill="${color}"/></svg>`;
+ function poster(item) {
+  const image = {xh:'story-xh.jpg',sf:'story-sf.jpg',gz:'story-gz.jpg',wx:'hero-concept.jpg'}[item.g];
+  return `<img src="/assets/${image}" alt="" loading="lazy" width="1000" height="560">`;
  }
  function renderStories() {
   const filtered = catalog.stories.filter(s => genre === 'all' || s.g === genre);
