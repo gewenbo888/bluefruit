@@ -34,3 +34,7 @@ Vercel 静态发布。检查选集、播放／暂停／拖动、文稿、故事�
 
 Live: https://bluefruit.psyverse.fun/
 GitHub: https://github.com/gewenbo888/bluefruit
+
+## 中英文界面
+
+顶部的中文 / EN 按钮切换界面与项目资料，选择保存在当前浏览器。可用 `?lang=en` 或 `?lang=zh` 分享指定语言。`i18n.js` 包含翻译词典与切换逻辑。用户输入与实验笔记保持原文；下载记录按当前语言生成。蓝果样片保留原中文音轨，并提供英文文稿。

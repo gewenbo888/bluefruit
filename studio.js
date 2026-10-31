@@ -1,6 +1,7 @@
 /* Native, free sample screening. No client-side payment or access claims. */
 (() => {
  'use strict';
+ const T = text => window.SiteLanguage.t(text);
  const $ = selector => document.querySelector(selector);
  const escape = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  const player = $('#main-video-player');
@@ -45,7 +46,7 @@
   const b = e.target.closest('[data-story]'); const item = catalog?.stories.find(s => s.id === b?.dataset.story); if (!item) return;
   $('#story-detail').innerHTML = `<p class="muted small">${genres[item.g]} · 概念开发</p><h2 id="story-title">${escape(item.t)}</h2><p class="story-hook">${escape(item.h)}</p><p>${escape(item.syn)}</p><p class="muted small">此条目是故事设定，尚无对应成片。现有视频请观看首页工程样片。</p><a class="button primary" href="#commercial" id="discuss-story">讨论这个方向 →</a>`;
   dialog.showModal();
-  $('#discuss-story').addEventListener('click', () => { dialog.close(); $('#brief-idea').value = `我想讨论《${item.t}》这个故事方向。\n`; });
+  $('#discuss-story').addEventListener('click', () => { dialog.close(); $('#brief-idea').value = T(`我想讨论《${item.t}》这个故事方向。\n`); });
  });
  $('.dialog-close').addEventListener('click', () => dialog.close());
  dialog.addEventListener('click', e => { if (e.target === dialog) { const r=dialog.getBoundingClientRect(); if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close(); } });
@@ -55,15 +56,28 @@
  }
  function renderPrompts() { $('#prompt-content').textContent = promptText(); }
  $('#prompt-genre').addEventListener('change', renderPrompts);
- $('#copy-prompts').addEventListener('click', () => copy(promptText()));
+ $('#copy-prompts').addEventListener('click', () => copy(T(promptText())));
+ function renderBrief() {
+  const form = new FormData($('#brief-form'));
+  brief = `${T('蓝果短剧 · 制作需求简报')}
+
+${T('项目想法：')} ${String(form.get('idea')).trim()}
+${T('项目类型：')} ${form.get('type')}
+${T('目标时长：')} ${String(form.get('duration')).trim()||T('待讨论')}
+${T('称呼与联系方式：')} ${String(form.get('contact')).trim()||T('待补充')}
+
+${T('请共同确认：用途与发布渠道、故事与视觉参考、预算范围、交付规格、修改次数与时间安排。')}`;
+  $('#brief-preview').textContent = brief; $('#brief-result').hidden = false;
+  $('#email-brief').href = 'mailto:gewenbo888@gmail.com?subject='+encodeURIComponent(T('蓝果短剧 · 制作咨询'))+'&body='+encodeURIComponent(brief);
+ }
  $('#brief-form').addEventListener('submit', e => {
   e.preventDefault();
-  const form = new FormData(e.currentTarget);
-  brief = `蓝果短剧 · 制作需求简报\n\n项目想法：${String(form.get('idea')).trim()}\n项目类型：${form.get('type')}\n目标时长：${String(form.get('duration')).trim()||'待讨论'}\n称呼与联系方式：${String(form.get('contact')).trim()||'待补充'}\n\n请共同确认：用途与发布渠道、故事与视觉参考、预算范围、交付规格、修改次数与时间安排。`;
-  $('#brief-preview').textContent = brief; $('#brief-result').hidden = false;
-  $('#email-brief').href = 'mailto:gewenbo888@gmail.com?subject='+encodeURIComponent('蓝果短剧 · 制作咨询')+'&body='+encodeURIComponent(brief);
+  if (!$('#brief-idea').value.trim()) { $('#brief-idea').setCustomValidity(T('请填写项目想法。')); $('#brief-idea').reportValidity(); return; }
+  renderBrief();
   $('#brief-result').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'nearest'});
  });
+ $('#brief-idea').addEventListener('input',()=>$('#brief-idea').setCustomValidity(''));
+ document.addEventListener('languagechange',()=>{ $('#brief-idea').setCustomValidity('');if(brief)renderBrief(); });
  $('#copy-brief').addEventListener('click', () => copy(brief));
  $('#download-brief').addEventListener('click', () => { if (brief) download(brief,'bluefruit-project-brief.txt'); });
  Promise.all([fetch('/catalog.json').then(r => { if(!r.ok)throw Error('catalog');return r.json(); }),fetch('/prompts.json').then(r => { if(!r.ok)throw Error('prompts');return r.json(); })]).then(([c,p]) => {
