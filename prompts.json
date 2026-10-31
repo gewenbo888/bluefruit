@@ -1,0 +1,62 @@
+{
+  "xuanhuan": {
+    "genre": "玄幻 · Eastern Fantasy",
+    "hookTitle": "0-3s 黄金冲突钩子",
+    "hookPrompt": "东方神话巨擘风格，青云古宗山门天穹被猩红九霄神雷撕裂，引仙石碑剧烈坍塌爆炸，碎石在超强冲击波中漫天激射。少年林渊白发被狂风吹散，单手直指雷劫中心，眼眸中金色太古骨文急速转动。8k resolution, cinematic lighting, volumetric lightning rays, Unreal Engine 5 render, Masterpiece.",
+    "hookDialogue": "林渊：‘青云宗欺我三千年无灵根，今日这飞升雷劫——我替诸天万界收了！’",
+    "twistTitle": "45s 情绪转折卡点",
+    "twistPrompt": "太古骨文从主角掌心蔓延至整条右臂，玄黄凶兽虚影在黑云后睁开千丈金瞳，山门九位化神期长老剑阵当场碎裂，剑刃倒插于大地，飞沙走石与空间扭曲碎片。dramatic chiaroscuro lighting, slow motion 60fps, particle storm, epic scale.",
+    "twistDialogue": "传功长老惊骇倒退：‘不可能……他体内封印的不是废脉，那是吞噬上古仙魔的混沌归墟！’",
+    "cliffTitle": "集尾悬念",
+    "cliffPrompt": "九霄天劫正上方，虚空中浮现出一只遮蔽整座大陆的冰冷金色眼眸，上苍法旨降临，整片大陆的灵气瞬间归零，主角身后混沌巨兽仰天咆哮。镜头在眼眸凝视主角的瞬间拉成全景黑屏。extreme tension, cliffhanger, glowing runes, dark cinematic depth.",
+    "audioPrompt": "BGM: 原创电影配乐风格重度低音铜管咆哮 + 传统古筝急速刮奏，雷鸣与剑器爆裂声。Voicebox: 沉稳低沉撕裂感青年男声，呼吸声清晰。"
+  },
+  "mofa": {
+    "genre": "魔幻 · Dark Magic & Sorcery",
+    "hookTitle": "0-3s 黄金冲突钩子",
+    "hookPrompt": "暗黑哥特中世纪大教堂，十二根古老雕花石柱在紫黑色魔法风暴中化为粉末。首席禁咒法师手握龙骨魔杖，杖尖燃烧着不灭冥火，整座王都天空升起猩红六芒星法阵。8k, hyper-detailed, gothic dark fantasy, glowing purple runes, volumetric smoke, ray tracing.",
+    "hookDialogue": "法师：‘第七任教皇欺瞒世人三百年，这所谓的圣光之下，囚禁的是整整十万名黑魔法受害者的冤魂！’",
+    "twistTitle": "45s 情绪转折卡点",
+    "twistPrompt": "圣光审判骑士团的铠甲在一秒内被暗黑触手腐蚀成白灰，主教胸前悬挂的圣杯中流淌出滚烫熔岩，反魔法立场屏障瞬间崩解，暗夜恶魔的双翼从圣母雕像后方轰然展开。extreme cinematic tension, hyper-realistic dark fantasy, dynamic camera orbit.",
+    "twistDialogue": "教皇面具脱落：‘你居然敢直视深渊……既然你见到了真正的神明，那就与这座城一起陪葬吧！’",
+    "cliffTitle": "集尾悬念",
+    "cliffPrompt": "主角翻开禁忌法典的最终页，法典内伸出无数枯骨抓住他的双臂，全城法力光芒汇入其身躯，王都地面开始垂直向深渊坠落。黑屏卡点。apocalyptic scale, dark magic singularity, dramatic cliffhanger cut.",
+    "audioPrompt": "BGM: 哥特女声重唱圣咏与深邃大提琴交织，管风琴轰鸣与火焰呼啸。Voicebox: 磁性沙哑中音，带轻微空间回响。"
+  },
+  "scifi": {
+    "genre": "科幻 · Hard Sci-Fi",
+    "hookTitle": "0-3s 黄金冲突钩子",
+    "hookPrompt": "深空柯伊伯带边缘，重型核聚变货运穿梭机剧烈震动，主推进器喷出千米等离子幽蓝尾焰。前方原本空无一物的星图上，突然凭空撕裂出一道长达数万公里的非欧几里得引力裂缝，数千艘外星母舰的几何阴影缓缓浮现。photorealistic 8k, hard sci-fi, Christopher Nolan aesthetic, Interstellar style, dynamic camera shake, cinematic.",
+    "hookDialogue": "舰长：‘全舰进入紧急过载状态！这不是自然引力波，是三类文明的维度投射！’",
+    "twistTitle": "45s 情绪转折卡点",
+    "twistPrompt": "空间站引力环断裂，失重漂浮的工程师隔着强化玻璃注视着太阳在数秒内被戴森球网格锁死变暗，空间站所有全息界面闪烁刺目红光并跳出人类基因灭绝协议。hard sci-fi interior, neon red emergency lights, macro reflection on helmet visor, photorealistic.",
+    "twistDialogue": "AI 主脑女声：‘警报，警报：地球总部已于 42 秒前被二维化，全人类仅剩当前舰船 71 名幸存者。’",
+    "cliffTitle": "集尾悬念",
+    "cliffPrompt": "主角启动反物质曲率引擎最高过载，穿梭机跃迁入引力透镜中心，前方裂隙中浮现出与地球一模一样但体积庞大万倍的镜面星球。警报声戛然而止，黑屏。Interstellar black hole aesthetic, breathtaking, cliffhanger.",
+    "audioPrompt": "BGM: 钛金属撞击与次声波低频震荡，机械警报声，宇宙真空窒息感音效。Voicebox: 沉着冷冽中英双语女声，快速倒计时。"
+  },
+  "qihuan": {
+    "genre": "奇幻 · High Fantasy & Myth",
+    "hookTitle": "0-3s 黄金冲突钩子",
+    "hookPrompt": "九万米浮空大陆边缘，巨大古老蒸汽发条齿轮与巨龙肋骨严丝合缝咬合，排气阀喷射出金色蒸汽云海。机械驯兽师踩在飞空艇龙骨尖端，手中缰绳连接着展翅三千米的机械发条青铜巨龙。high fantasy, Hayao Miyazaki meets Steampunk, vibrant colors, epic sky view, golden hour sunlight, 8k render.",
+    "hookDialogue": "驯兽师：‘只要发条还在转动，天穹诸神的浮空岛就别想踏入人间一步！’",
+    "twistTitle": "45s 情绪转折卡点",
+    "twistPrompt": "云海深处浮现出一座由纯净光晶体构建的天空圣城，无数光刃天使从圣城城门倾泻而下，发条巨龙的动力核心在光刃轰击下出现裂缝，蓝色源石能量液如瀑布倾泻。epic aerial battle, dynamic depth of field, anime cinematic masterpiece.",
+    "twistDialogue": "天界审判官：‘凡人用破铜烂铁拼凑的心脏，也敢自称能载动诸神之怒？’",
+    "cliffTitle": "集尾悬念",
+    "cliffPrompt": "驯兽师扯断自身源石神经接驳线，将其直接插进巨龙心脏，整条机械巨龙爆发出刺目超新星蓝焰，向天空圣城主炮口迎面撞去。巨响前瞬间黑屏。explosive climax, dramatic freeze frame, epic cliffhanger.",
+    "audioPrompt": "BGM: 激昂管弦乐交响与凯尔特风笛，蒸汽齿轮咔哒声与龙啸。Voicebox: 热血高亢少年音，情绪饱满。"
+  },
+  "kepu": {
+    "genre": "科普 · Deep Science Explanatory",
+    "hookTitle": "0-3s 黄金冲突钩子",
+    "hookPrompt": "微观量子尺度极限放大，两个自旋相反的纠缠电子在普朗克尺度光晶格中高速自旋，虚光子如量子雨般在两个粒子间跳跃。镜头以超光速穿透星系尺度拉远，展现相隔4光年的两个粒子瞬间同时改变偏振态。scientific visualization, quantum entanglement, Planck scale, hyper-realistic scientific documentary, BBC / Cosmos style, 8k render.",
+    "hookDialogue": "旁白：‘爱因斯坦曾称它为幽灵般的超距作用。但在 2026 年，人类终于抓到了它的物理尾巴。’",
+    "twistTitle": "45s 情绪转折卡点",
+    "twistPrompt": "从微观量子跃迁至宏观宇宙微波背景辐射图，宇宙大爆炸奇点在纳秒内暴胀展开，引力波在四维时空晶格中激荡出剧烈涟漪，时空曲率被超大质量黑洞垂直撕裂。Cosmic inflation, gravitational waves, 4D spacetime fabric warping, documentary cinematography.",
+    "twistDialogue": "科学家：‘如果贝尔不等式在全宇宙尺度破缺，那么我们生活的整个时空，可能只是一张全息投影。’",
+    "cliffTitle": "集尾悬念",
+    "cliffPrompt": "探测器屏幕上的量子干涉条纹在人类眨眼的百分之一毫秒内突然消失，取而代之的是一段用摩尔斯电码排列的宇宙基底常数。镜头瞬间切入纯黑，滴声留白。mind-bending science mystery, chilling realization, documentary cliffhanger.",
+    "audioPrompt": "BGM: 极简纯净合成器音效与脉冲星射电信号采样，深邃空灵。Voicebox: 理性知性磁性解说音（央视纪录片/BBC解说腔）。"
+  }
+}

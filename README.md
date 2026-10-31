@@ -1,17 +1,36 @@
-# 蓝果短剧 BlueFruit · AI 原生短剧厂牌
+# 蓝果短剧 BlueFruit
 
-AI-native short drama studio concept site. 蓝果专攻真人拍摄成本最高的四种类型——玄幻、科幻、规则怪谈、无限流，用生成式管线把单集成本压到真人剧的 8%，7 天一部、20:1 铺量抽卡。含 12 部虚构片单（465 集）、五步制作管线、成本对比可视化。
+原创科幻与幻想叙事，从分镜到成片。
 
-## Links
+## 网站功能
 
-- **Live:** [bluefruit.psyverse.fun](https://bluefruit.psyverse.fun)
-- **Vercel:** [bluefruit.vercel.app](https://bluefruit.vercel.app)
-- **GitHub:** [github.com/gewenbo888/bluefruit](https://github.com/gewenbo888/bluefruit)
+- 六集现有工程样片免费预览、选集、实际分辨率与时长展示、文稿阅读。
+- 十二个原有故事设定保留在故事档案，明确标记为概念开发，不再声称已完成 465 集。
+- 原有五类剧本与分镜资料支持选择、阅读与复制。
+- 制作需求简报可以生成、复制、下载或由用户通过邮件发送。页面不会假装提交到不存在的后台。
+- 原生对话框支持键盘关闭，手机端独立排版。
 
-## Stack
+## 功能边界
 
-Plain HTML/CSS/JS — single file, SVG-procedural posters (four genre motifs), IntersectionObserver reveals, episode-list modals. No build step.
+现有视频为工程样片，主要展示分镜、文字、旁白与播放流程；不能代表影视级成片。首页背景为生成的概念视觉，并已标明。
+移除了浏览器直接标记付款成功的解锁流程。当前全部样片免费，未接通订单与支付核验服务，不出售观看权益。
+`gpu_fleet_orchestrator.py` 为任务规划样例，不作为真实运行 GPU 数量或制作成本证据。
 
-## About
+## 开发
 
-Part of the [Psyverse](https://psyverse.fun) portfolio by [Gewenbo](https://psyverse.fun).
+无需构建：
+
+```sh
+python3 -m http.server 4181 --bind 127.0.0.1
+```
+
+打开 http://127.0.0.1:4181/。
+站点文件：index.html、studio.css、studio.js、catalog.json、prompts.json、assets/。
+样片保留在 output/，未改写原有视频或 projects/ 中的素材。
+
+## 部署与检查
+
+Vercel 静态发布。检查选集、播放／暂停／拖动、文稿、故事筛选／详情、提示词选择与复制、需求表单／下载，及 320px 起的手机布局。
+
+Live: https://bluefruit.psyverse.fun/
+GitHub: https://github.com/gewenbo888/bluefruit
