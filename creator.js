@@ -1094,8 +1094,24 @@ document.addEventListener("click", async (e) => {
           await accountDialog();
           break;
         }
-        await saveCloud(project, store);
-        notify(tr("已保存到账号", "Saved to account"));
+        setBusy(true);
+        b.textContent = tr("正在保存…", "Saving…");
+        try {
+          await saveCloud(project, store);
+          let status = document.querySelector("#cloud-save-status");
+          if (!status) {
+            status = document.createElement("p");
+            status.id = "cloud-save-status";
+            status.className = "wizard-help";
+            status.setAttribute("role", "status");
+            b.parentElement.after(status);
+          }
+          status.textContent = tr("上次云端保存：", "Last cloud save: ") + new Date().toLocaleTimeString(lang === "en" ? "en-US" : "zh-CN");
+          notify(tr("已保存到账号", "Saved to account"));
+        } finally {
+          b.textContent = tr("保存到账号", "Save to account");
+          setBusy(false);
+        }
         break;
       case "cloud-projects":
         await showCloudProjects(async (row) => {

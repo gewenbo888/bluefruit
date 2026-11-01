@@ -7,15 +7,19 @@ import {
   ownSubmissions,
 } from "./platform-cloud.js";
 const money = document.body.classList.contains("money");
+let renderVersion = 0;
 async function render() {
+  const version = ++renderVersion;
   let error = false;
   try {
     await acceptAuthReturn();
   } catch {
     error = true;
   }
+  if (version !== renderVersion) return;
   const config = await cloudConfig(),
     session = await cloudSession();
+  if (version !== renderVersion) return;
   const message = !config.configured
     ? tr(
         "免费账号服务正在开通。现在可以先在本机制作、保存和备份项目。",
@@ -63,7 +67,7 @@ async function render() {
               )
               .join("")
           : `<p>${tr("还没有投稿。完成短片后可在预览页提交。", "No submissions yet. Submit a film from its preview page.")}</p>`);
-      document.querySelector("#main")?.append(section);
+      if (version === renderVersion) document.querySelector("#main")?.append(section);
     } catch {}
   }
 }
