@@ -5,3 +5,5 @@
 audio{max-width:100%;margin:12px 0}
 
 .skip{position:fixed;left:16px;top:-100px;background:var(--accent);color:var(--bg);padding:10px 16px;z-index:100}.skip:focus{top:10px}
+
+.shot-media{width:100%;min-width:0}.shot>div{min-width:0}
