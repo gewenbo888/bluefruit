@@ -14,15 +14,16 @@ module.exports=async(req,res)=>{
  const send=(status,data)=>res.status(status).json(data);
  const provider=process.env.WORKSPACE_PROVIDER==='gemini'?'gemini':'openai',key=provider==='gemini'?geminiKeys()[0]:process.env.OPENAI_API_KEY,secret=process.env.WORKSPACE_ACCESS_SECRET,kind=process.env.WORKSPACE_KIND;
  const textModel=process.env.WORKSPACE_TEXT_MODEL||(provider==='gemini'?'gemini-3-flash-preview':'gpt-4.1-mini'),imageModel=process.env.WORKSPACE_IMAGE_MODEL||(provider==='gemini'?'gemini-3.1-flash-image':'gpt-image-1.5');
- if(req.method==='GET')return send(200,{enabled:!!(key&&secret),provider,textModel,imageModel:kind==='blue'?imageModel:null,imageEnabled:!!(key&&secret)&&kind==='blue'&&process.env.WORKSPACE_IMAGE_ENABLED!=='false',authentication:'owner-file'});
+ if(req.method==='GET')return send(200,{enabled:!!(key&&secret),provider,textModel,imageModel:kind==='blue'?imageModel:null,imageEnabled:!!(key&&secret)&&kind==='blue'&&process.env.WORKSPACE_IMAGE_ENABLED!=='false',authentication:process.env.PLATFORM_LOGIN_READY==='true'?'account-or-owner':'owner-file'});
  if(req.method!=='POST'){res.setHeader('Allow','GET, POST');return send(405,{error:'method'})}
  if(!key||!secret)return send(503,{error:'not_configured'});
- const bearer=string(req.headers.authorization,300).replace(/^Bearer /,'');if(!crypto.timingSafeEqual(digest(bearer),digest(secret)))return send(401,{error:'unauthorized'});
+ const bearer=string(req.headers.authorization,5000).replace(/^Bearer /,'');let cloudUser=null;if(!crypto.timingSafeEqual(digest(bearer),digest(secret))){if(process.env.PLATFORM_LOGIN_READY!=='true')return send(401,{error:'unauthorized'});try{cloudUser=await require('../server/platform.js').user(bearer)}catch{return send(401,{error:'unauthorized'})}}
  const origin=req.headers.origin;if(origin&&origin!==process.env.WORKSPACE_ORIGIN)return send(403,{error:'origin'});
  let body;try{body=typeof req.body==='string'?JSON.parse(req.body):req.body;if(!body||JSON.stringify(body).length>1600000)return send(413,{error:'size'})}catch{return send(400,{error:'invalid_json'})}
  if(body.action==='verify')return send(200,{verified:true});
  if(body.action==='image'&&process.env.WORKSPACE_IMAGE_ENABLED==='false')return send(503,{error:'image_disabled'});
  const allowed=kind==='blue'?['storyboard','image']:['delivery'];if(!allowed.includes(body.action))return send(400,{error:'action'});
+ if(cloudUser){try{if(!await require('../server/platform.js').reserve(cloudUser.id))return send(429,{error:'daily_limit'})}catch{return send(503,{error:'usage_unavailable'})}}
  const now=Math.floor(Date.now()/3600000);if(now!==hour){hour=now;count=0}if(count>=20)return send(429,{error:'session_limit'});count++;
  const timeout=AbortSignal.timeout(55000),input=body.input||{},language=body.language==='en'?'English':'Simplified Chinese';
  try{

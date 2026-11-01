@@ -15,6 +15,12 @@
   "functions": {
     "api/generate.js": {
       "maxDuration": 60
+    },
+    "api/platform.js": {
+      "maxDuration": 60
     }
-  }
+  },
+  "buildCommand": "node scripts/build.cjs",
+  "outputDirectory": "public",
+  "framework": null
 }

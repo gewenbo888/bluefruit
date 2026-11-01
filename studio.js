@@ -44,7 +44,7 @@
  document.querySelector('.filters').addEventListener('click', e => { const b = e.target.closest('[data-genre]'); if (!b || !catalog) return; genre = b.dataset.genre; expanded = true; document.querySelectorAll('[data-genre]').forEach(x => x.setAttribute('aria-pressed', String(x===b))); renderStories(); });
  $('#story-grid').addEventListener('click', e => {
   const b = e.target.closest('[data-story]'); const item = catalog?.stories.find(s => s.id === b?.dataset.story); if (!item) return;
-  $('#story-detail').innerHTML = `<p class="muted small">${genres[item.g]} · 概念开发</p><h2 id="story-title">${escape(item.t)}</h2><p class="story-hook">${escape(item.h)}</p><p>${escape(item.syn)}</p><p class="muted small">此条目是故事设定，尚无对应成片。现有视频请观看首页工程样片。</p><a class="button primary" href="/studio.html?story=${item.id}&lang=${window.SiteLanguage.language}">在创作台展开 →</a><a class="button" href="#commercial" id="discuss-story">讨论这个方向 →</a>`;
+  $('#story-detail').innerHTML = `<p class="muted small">${genres[item.g]} · 概念开发</p><h2 id="story-title">${escape(item.t)}</h2><p class="story-hook">${escape(item.h)}</p><p>${escape(item.syn)}</p><p class="muted small">此条目是故事设定，尚无对应成片。现有视频请观看首页工程样片。</p><a class="button primary" href="/create.html?story=${item.id}&lang=${window.SiteLanguage.language}">在创作台展开 →</a><a class="button" href="#commercial" id="discuss-story">讨论这个方向 →</a>`;
   dialog.showModal();
   $('#discuss-story').addEventListener('click', () => { dialog.close(); $('#brief-idea').value = T(`我想讨论《${item.t}》这个故事方向。\n`); });
  });

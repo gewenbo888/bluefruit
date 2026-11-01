@@ -1,0 +1,10 @@
+{
+  "private": true,
+  "engines": {
+    "node": "22.x"
+  },
+  "scripts": {
+    "build": "node scripts/build.cjs",
+    "test": "node --test tests/*.cjs"
+  }
+}
