@@ -1,5 +1,5 @@
 import { backup, restorePackage, uid } from "./workspace-core.js";
-import { esc, tr, notify } from "./platform-common.js";
+import { esc, tr, notify, link } from "./platform-common.js";
 let configuration, sessionMemory;
 window.addEventListener("storage", (e) => {
   if (e.key === "psy-cloud-session-v1") {
@@ -23,6 +23,13 @@ function remember(session) {
   if (session && !session.expires_at)
     session.expires_at =
       Math.floor(Date.now() / 1000) + Number(session.expires_in || 3600);
+  if (session)
+    session = {
+      access_token: session.access_token,
+      refresh_token: session.refresh_token,
+      expires_at: session.expires_at,
+      user: { id: session.user?.id, email: session.user?.email || "" },
+    };
   sessionMemory = session;
   try {
     if (session) localStorage.setItem(SESSION_KEY, JSON.stringify(session));
@@ -85,6 +92,39 @@ function modal(title) {
   dialog.showModal();
   return dialog;
 }
+const PKCE_KEY = "psy-cloud-pkce-v1";
+async function prepareProof() {
+  const bytes = crypto.getRandomValues(new Uint8Array(48));
+  const verifier = btoa(String.fromCharCode(...bytes))
+    .replaceAll("+", "-")
+    .replaceAll("/", "_")
+    .replace(/=+$/, "");
+  const digest = new Uint8Array(
+    await crypto.subtle.digest("SHA-256", new TextEncoder().encode(verifier)),
+  );
+  const challenge = btoa(String.fromCharCode(...digest))
+    .replaceAll("+", "-")
+    .replaceAll("/", "_")
+    .replace(/=+$/, "");
+  sessionStorage.setItem(
+    PKCE_KEY,
+    JSON.stringify({ verifier, created: Date.now() }),
+  );
+  return challenge;
+}
+async function githubSignIn() {
+  const config = await cloudConfig();
+  if (!config.configured || !config.auth?.github) throw Error("cloud_offline");
+  const challenge = await prepareProof();
+  const url = new URL(config.url + "/auth/v1/authorize");
+  url.search = new URLSearchParams({
+    provider: "github",
+    redirect_to: location.origin + link("/account.html"),
+    code_challenge: challenge,
+    code_challenge_method: "s256",
+  }).toString();
+  location.assign(url.href);
+}
 export async function accountDialog() {
   const config = await cloudConfig();
   if (!config.configured) throw Error("cloud_offline");
@@ -98,26 +138,52 @@ export async function accountDialog() {
     body = dialog.querySelector("#cloud-dialog-body");
   if (session) {
     body.innerHTML += `<p>${esc(session.user?.email || "")}</p><p>${tr("项目和素材可保存到账号，在其他设备登录后打开。", "Save projects and assets to your account, then open them on another device.")}</p><button class="button" id="sign-out">${tr("退出登录", "Sign out")}</button>`;
-    body.querySelector("#sign-out").onclick = () => {
+    body.querySelector("#sign-out").onclick = async () => {
+      const token = session.access_token;
       remember(null);
+      try {
+        await supabase("/auth/v1/logout", { method: "POST" }, token);
+      } catch {}
       dialog.close();
     };
     return null;
   }
-  body.innerHTML += `<p>${tr("用邮箱收取登录链接。无需设置密码，作品默认仅自己可见。本浏览器保持登录，可随时退出。", "Receive a sign-in link by email. No password required. Your work is private by default. This browser stays signed in until you sign out.")}</p><form id="cloud-email"><label>${tr("邮箱", "Email")}<input type="email" name="email" required autocomplete="email" maxlength="254"></label><button class="button primary" style="margin-top:18px">${tr("发送登录链接", "Send sign-in link")}</button><p id="cloud-login-status" role="status"></p></form>`;
+  body.innerHTML += `<p>${tr("登录后，作品默认仅自己可见。本浏览器保持登录，可随时退出。", "Your work is private by default. This browser stays signed in until you sign out.")}</p>${config.auth?.github ? `<button class="button primary" id="github-sign-in">${tr("使用 GitHub 登录", "Continue with GitHub")}</button><p>${tr("仅用于身份验证，不请求仓库读写权限。", "Used to verify your identity. No repository access is requested.")}</p>` : ""}${config.auth?.email ? `<form id="cloud-email"><label>${tr("邮箱", "Email")}<input type="email" name="email" required autocomplete="email" maxlength="254"></label><button class="button primary" style="margin-top:18px">${tr("发送登录链接", "Send sign-in link")}</button><p id="cloud-login-status" role="status"></p></form>` : ""}<p id="oauth-status" role="status"></p>`;
+  body
+    .querySelector("#github-sign-in")
+    ?.addEventListener("click", async (event) => {
+      event.currentTarget.disabled = true;
+      try {
+        await githubSignIn();
+      } catch {
+        body.querySelector("#oauth-status").textContent = tr(
+          "无法开始登录，请稍后重试。",
+          "Could not start sign-in. Please try again.",
+        );
+        event.target.disabled = false;
+      }
+    });
+  const emailForm = body.querySelector("form");
+  if (!emailForm) return null;
   body.querySelector("form").onsubmit = async (e) => {
     e.preventDefault();
     const button = e.target.querySelector("button");
     button.disabled = true;
     try {
-      const email = new FormData(e.target).get("email");
+      const email = new FormData(e.target).get("email"),
+        challenge = await prepareProof();
       await supabase(
         "/auth/v1/otp?redirect_to=" +
-          encodeURIComponent(location.origin + "/account.html"),
+          encodeURIComponent(location.origin + link("/account.html")),
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email, create_user: true }),
+          body: JSON.stringify({
+            email,
+            create_user: true,
+            code_challenge: challenge,
+            code_challenge_method: "s256",
+          }),
         },
       );
       body.querySelector("#cloud-login-status").textContent = tr(
@@ -307,22 +373,45 @@ export async function submitFilm(project, store) {
   };
 }
 export async function acceptAuthReturn() {
-  const hash = new URLSearchParams(location.hash.slice(1));
-  if (hash.get("access_token")) {
-    const access = hash.get("access_token"),
-      config = await cloudConfig();
-    const user = await supabase("/auth/v1/user", {}, access);
-    remember({
-      access_token: access,
-      refresh_token: hash.get("refresh_token"),
-      expires_at:
-        Math.floor(Date.now() / 1000) + Number(hash.get("expires_in") || 3600),
-      user,
-    });
-    history.replaceState(null, "", location.pathname + location.search);
-    return true;
-  }
-  return false;
+  const query = new URLSearchParams(location.search),
+    hash = new URLSearchParams(location.hash.slice(1));
+  const code = query.get("code"),
+    failed =
+      query.has("error") || hash.has("error") || hash.has("access_token");
+  if (!code && !failed) return false;
+  query.delete("code");
+  query.delete("error");
+  query.delete("error_code");
+  query.delete("error_description");
+  history.replaceState(
+    null,
+    "",
+    location.pathname + (query.size ? "?" + query : ""),
+  );
+  const raw = sessionStorage.getItem(PKCE_KEY);
+  sessionStorage.removeItem(PKCE_KEY);
+  if (failed || !code || code.length > 4096) throw Error("auth_return");
+  let proof;
+  try {
+    proof = JSON.parse(raw);
+  } catch {}
+  if (
+    !proof ||
+    !/^[A-Za-z0-9_-]{64}$/.test(proof.verifier) ||
+    Date.now() - proof.created > 600000 ||
+    proof.created > Date.now()
+  )
+    throw Error("auth_return");
+  const result = await supabase("/auth/v1/token?grant_type=pkce", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ auth_code: code, code_verifier: proof.verifier }),
+  });
+  if (!result?.access_token || !result.refresh_token)
+    throw Error("auth_return");
+  const user = await supabase("/auth/v1/user", {}, result.access_token);
+  remember({ ...result, user });
+  return true;
 }
 
 export async function ownSubmissions() {

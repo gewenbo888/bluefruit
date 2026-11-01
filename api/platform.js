@@ -28,6 +28,10 @@ module.exports = async (req, res) => {
       configured,
       url: configured ? c.url : null,
       publicKey: configured ? c.publicKey : null,
+      auth: {
+        github: configured && process.env.PLATFORM_AUTH_GITHUB === "true",
+        email: configured && process.env.PLATFORM_AUTH_EMAIL === "true",
+      },
     });
   if (action === "publications" && req.method === "GET") {
     if (!c.url || !c.publicKey) return send(200, { items: [] });

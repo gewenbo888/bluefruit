@@ -22,3 +22,5 @@ Intentional functional deviations: shared navigational header across screens, si
 Native-size viewport overrides were attempted at 1434×1096 and 1672×941; IAB compositor captures remained at the current 1265×712 output. Current desktop capture and separate mobile checks were reviewed. Screenshots saved in the Codex visualization folder for this chat.
 
 Cloud SQL, private storage, JWT verification, quotas and moderation endpoints have automated coverage. Supabase is NOT provisioned or integration-tested yet. Public account features remain disabled until real authentication delivery and cross-user isolation are verified. Images remain disabled due provider quota limitations.
+
+Update: free Supabase project lknxzljgongrnixugfav created and schema migration executed successfully. GitHub OAuth application created; provider credential setup is waiting for GitHub identity verification. Twenty automated tests now pass, including browser-bound PKCE callback exchange and rejection cases. Account services remain gated until real sign-in and storage verification.

@@ -94,3 +94,5 @@ Money 保留原有 24 个方向和全部组合筛选。品牌短片、小工具�
 `npm test` 覆盖生成授权/配额、跨来源拒绝、云端身份绑定、投稿只能进入待审核、所有者审核限制，以及备份恢复和 CRC。云端集成测试仍须在免费服务开通后执行。
 
 `/works.html` 统一列出本机草稿、归档入口、云端作品入口及账号/投稿进度。My work 的主入口不再直接进入高级编辑器。
+
+GitHub login uses browser-bound PKCE and a ten-minute local verifier. Enable `PLATFORM_AUTH_GITHUB=true` only after configuring the dedicated OAuth app. `PLATFORM_AUTH_EMAIL` stays false until custom SMTP delivery is verified. Supabase default mail cannot provide public email sign-in. Server credentials are deployment environment variables, never public build files.
