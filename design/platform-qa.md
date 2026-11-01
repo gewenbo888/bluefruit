@@ -33,4 +33,6 @@ Two real temporary identities verified private upload, own listing/download, den
 
 Both deployed Vercel APIs independently passed authenticated project save/list and byte-exact private ZIP downloads. Verification identities and artifacts were removed. Twenty automated tests pass per repository.
 
-The browser OAuth flow reached GitHub consent with only user:email scope. The user must approve their own account association before the final real-user callback and guided cloud UI checks can complete. No repository scope is requested.
+The user approved the GitHub account association. Real browser OAuth callbacks succeeded on both production domains with only user:email scope. No repository scope is requested.
+
+Final browser verification: BlueFruit signed in, created the complete example, saved it to the account, restored it from the cloud, recorded a 6.04-second MP4, played it to completion and saved the film with its assets back to the cloud. The downloaded cloud ZIP passed CRC and contained three images, original music, and the actual 1280×720 video with audio. AI for Money signed in to the same account, created a research brief, saved and restored its tasks through the cloud UI, and retained user content during Chinese/English switching. Saving state and a persistent last-save time were verified. A duplicate account-section render caused by overlapping auth events was repaired. The submission form was inspected without submitting user rights declarations; the backend submission/moderation flow was integration-tested with temporary test identities.
