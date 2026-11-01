@@ -1,2 +1,7 @@
 .vercel
 *.mp4
+
+.env*
+!.env.example
+*owner-access*.json
+*connection*.json

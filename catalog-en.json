@@ -1,0 +1,156 @@
+{
+  "stories": [
+    {
+      "g": "xh",
+      "t": "Soul-Sealing Steles",
+      "h": "Each stele seals an ancient god. The ninth has cracked.",
+      "syn": "Nine steles stand along the spine of the realm, each holding down an ancient god who refuses to die. Their keepers remain silent for generations, until the ninth stone cracks. It can be repaired, but the material it requires is the name of a living person.",
+      "id": "story-1",
+      "stage": "In development"
+    },
+    {
+      "g": "xh",
+      "t": "Three Thousand Years of Qi",
+      "h": "When the entire sect ascended, he was left behind.",
+      "syn": "The least gifted disciple spends three thousand years at the first stage of cultivation. Others ascend one by one; he remembers every generation of cooks in the sect kitchen. When the gate of ascension opens again, the visitor is someone who has owed him a meal for three thousand years.",
+      "id": "story-2",
+      "stage": "In development"
+    },
+    {
+      "g": "xh",
+      "t": "Bestiary of the North",
+      "h": "Some spirits can be eaten. Some ward off evil. Some can be married.",
+      "syn": "A spirit hunter crosses the northern snowfields with a bestiary: edible spirits marked red, protective ones blue, and those who can marry humans with a question mark. Her latest commission is to classify something the book has never recorded.",
+      "id": "story-3",
+      "stage": "In development"
+    },
+    {
+      "g": "xh",
+      "t": "The God-Slaying Platform",
+      "h": "To ascend the platform is to slay the god within.",
+      "syn": "Mortals built a platform to slay a god, but only one person may climb it in each generation. The god they must kill is not in the sky. It is the one they have worshipped in their heart for half a lifetime.",
+      "id": "story-4",
+      "stage": "In development"
+    },
+    {
+      "g": "sf",
+      "t": "Memories for Rent",
+      "h": "Memories rent by the hour. Someone has borrowed her first love.",
+      "syn": "In 2088, renting out memories is legal. In her records she finds one memory borrowed seventeen times by the same stranger. Inside it is a person she no longer remembers at all.",
+      "id": "story-5",
+      "stage": "In development"
+    },
+    {
+      "g": "sf",
+      "t": "Seven Days in Deep Space",
+      "h": "The signal comes from a direction that does not exist.",
+      "syn": "A space station receives a distress signal from a region absent from every star chart. The crew decides to investigate. The round trip takes seven days, but when they return, seven years have passed.",
+      "id": "story-6",
+      "stage": "In development"
+    },
+    {
+      "g": "sf",
+      "t": "The Tomorrow Exchange",
+      "h": "Recycle yesterday. Receive tomorrow.",
+      "syn": "At the edge of the city, a recycling depot collects unwanted yesterdays and turns them into someone else's tomorrows. Its elderly keeper never recycles his own past, until someone brings him a receipt bearing his signature.",
+      "id": "story-7",
+      "stage": "In development"
+    },
+    {
+      "g": "gz",
+      "t": "Ten Rules for Night Study",
+      "h": "Rule five requires you to break rule seven.",
+      "syn": "On her first night at a new school, ten rules appear at the back of the classroom: do not answer the extra name during roll call; do not look outside after 10:40; rule five requires you to break rule seven. The rules protect those who follow them, except the person who follows both five and seven.",
+      "id": "story-8",
+      "stage": "In development"
+    },
+    {
+      "g": "gz",
+      "t": "The Last Train Instructions",
+      "h": "Do not look into the opposite window.",
+      "syn": "The last train announces two instructions: do not lean against the doors, and do not meet your own eyes in the opposite window. After working late, he boards an empty carriage. In the window across from him, every seat is occupied.",
+      "id": "story-9",
+      "stage": "In development"
+    },
+    {
+      "g": "gz",
+      "t": "The Guesthouse Rules",
+      "h": "Proof that room 203 does not exist is inside room 203.",
+      "syn": "Rule nine of a mountain guesthouse says there is no room 203. The last page of the guest rules contains a photograph of the entire building taken from inside that room. The date on the photograph is tomorrow.",
+      "id": "story-10",
+      "stage": "In development"
+    },
+    {
+      "g": "wx",
+      "t": "The Ten-Day Cycle",
+      "h": "The world resets every ten days. Only he remembers.",
+      "syn": "Floods, plagues and fires destroy the world every ten days, and then it begins again. Everyone returns with a sense of deja vu. Only he remembers everything. On day one hundred, he stops trying to save himself and starts counting how many first lives have ended.",
+      "id": "story-11",
+      "stage": "In development"
+    },
+    {
+      "g": "wx",
+      "t": "Instance: The Human World",
+      "h": "To win, make every player believe this is reality.",
+      "syn": "He awakens to a player interface, only to discover he is the last to do so. The system announces the final stage of an instance called The Human World: to win, every player must believe this world is real again. The first person to object is the teammate who urged him to wake up.",
+      "id": "story-12",
+      "stage": "In development"
+    }
+  ],
+  "episodes": [
+    {
+      "n": 1,
+      "title": "Episode 01 · The Summoning Token Shatters",
+      "src": "output/BF_XUANHUAN_EP01_DISPATCH.mp4",
+      "duration": 50,
+      "resolution": "1080 × 1920",
+      "fps": "25",
+      "transcript": "The heavens reverse their course. The summoning token shatters, and countless bolts of lightning tear through the gates of Qingyun Sect.\n\nAt the bottom of the Sword Abyss, a cast-out boy stripped of his sacred bone opens his twin pupils. Ancient beast markings awaken within him and begin to rebuild his body.\n\nThe ancestors of nine immortal sects unite against him. He rises into the sky with a twelve-petalled chaos lotus at his back and cuts through the river of cause and effect.\n\nThe sky tears open. The blood-red eye of a demon sovereign appears across the void. The confrontation continues in Episode 2."
+    },
+    {
+      "n": 2,
+      "title": "Episode 02 · Twin Pupils in the Sword Abyss",
+      "src": "output/BF_XUANHUAN_EP02_DISPATCH.mp4",
+      "duration": 60,
+      "resolution": "1080 × 1920",
+      "fps": "25",
+      "transcript": "An ancient barrier covers the Sword Abyss. Three demonic elders summon a formation to consume the boy and turn him into a blood elixir.\n\nHis twin pupils reveal the forces of creation. Ancient gods and demons bow before their power.\n\nThe elders unleash an ancestral weapon, but he breaks it with one finger. Their army falls from the sky.\n\nThe heavenly gate opens. An imperial decree commands the death of the twin-pupil anomaly. Episode 3 continues the confrontation with the celestial court."
+    },
+    {
+      "n": 3,
+      "title": "Episode 03 · The Alliance and the Awakening",
+      "src": "output/BF_XUANHUAN_EP03_DISPATCH.mp4",
+      "duration": 60,
+      "resolution": "1080 × 1920",
+      "fps": "25",
+      "transcript": "The nine immortal ancestors arrive with their sects' sacred weapons, turning the sky into a prison of lightning. They intend to destroy the awakened boy.\n\nAncient divine blood awakens within him. Golden markings rise from his bones, and the sacred weapons tremble.\n\nHe steps into the air, crushes the lightning and strikes with a world-shattering seal. The nine ancestors are defeated.\n\nAn eternal gate opens above the heavens, and the hand of a true immortal descends from an ancient star field. Can his sword break the decree?"
+    },
+    {
+      "n": 4,
+      "title": "Episode 04 · The Chaos Lotus and the Shattered Gate",
+      "src": "output/BF_XUANHUAN_EP04_DISPATCH.mp4",
+      "duration": 60,
+      "resolution": "1080 × 1920",
+      "fps": "25",
+      "transcript": "A thirty-six-petalled chaos lotus emerges from within the boy. Its radiance reaches across countless worlds, alarming the immortals.\n\nThe decree dissolves in the lotus light. The laws of the immortal order are overturned.\n\nHe turns the lotus into a sword and strikes upward through the stars. The nine heavenly gates collapse.\n\nBehind the gates, an ancient demon emperor and the true immortals begin to awaken. The story continues in Episodes 5 and 6."
+    },
+    {
+      "n": 5,
+      "title": "Episode 05 · A Sword Beyond Cause and Effect",
+      "src": "output/BF_XUANHUAN_EP05_DISPATCH.mp4",
+      "duration": 60,
+      "resolution": "1080 × 1920",
+      "fps": "25",
+      "transcript": "The will of an ancient demon emperor descends through the void. A trace of its power crushes stars and strains the laws of the universe.\n\nThe boy fuses his sacred bone, twin pupils and chaos lotus. His sword shines beyond the river of time.\n\nOne strike severs that river. The demon emperor's projection is destroyed, and gods across the worlds bow.\n\nBut the emperor's true form breaks through the boundary beyond the heavens. The final confrontation awaits in Episode 6."
+    },
+    {
+      "n": 6,
+      "title": "Episode 06 · The Final Battle · Season Finale",
+      "src": "output/BF_XUANHUAN_EP06_DISPATCH.mp4",
+      "duration": 60,
+      "resolution": "1080 × 1920",
+      "fps": "25",
+      "transcript": "The demon emperor's true form blots out the sky. Dark lightning breaks through the world boundary, and the realm begins to collapse.\n\nThe boy burns the last of his power into a single sword stroke spanning past and future. The chaos lotus blooms in the void.\n\nDarkness is torn apart. The demon emperor vanishes, and the chains of the great laws gather around the boy. The worlds recognize his authority.\n\nSeason one of Path Beyond Calamity concludes. Thank you for watching these BlueFruit technical samples."
+    }
+  ]
+}

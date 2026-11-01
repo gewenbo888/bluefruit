@@ -197,7 +197,10 @@
   "探测器屏幕上的量子干涉条纹在人类眨眼的百分之一毫秒内突然消失，取而代之的是一段用摩尔斯电码排列的宇宙基底常数。镜头瞬间切入纯黑，滴声留白。mind-bending science mystery, chilling realization, documentary cliffhanger.": "Interference fringes on a detector vanish within a tiny fraction of a blink. In their place appear fundamental cosmic constants arranged in Morse code. Cut instantly to black, leaving one electronic tone. A speculative science-fiction mystery and a documentary-style cliffhanger.",
   "BGM: 极简纯净合成器音效与脉冲星射电信号采样，深邃空灵。Voicebox: 理性知性磁性解说音（央视纪录片/BBC解说腔）。": "Original sound direction: minimal synthesizers and pulsar-inspired radio textures, spacious and subtle. Voice direction: calm, clear, rational documentary narration.",
   "请填写项目想法。": "Please enter your project idea.",
-  "现有样片主要展示分镜、文字、旁白与播放流程；不是实拍电影或完整生成式影视成片。音频保留原中文；旧录音中有关付费解锁或后续上线的表述已过时，这里六集均可免费预览。": "These technical samples demonstrate storyboards, text, narration and playback. They are not live-action films or finished generative films. Audio remains in Mandarin; the English transcript is available below. Older recordings mention paid unlocks or future releases; those references are out of date. All six samples are free here."
+  "现有样片主要展示分镜、文字、旁白与播放流程；不是实拍电影或完整生成式影视成片。音频保留原中文；旧录音中有关付费解锁或后续上线的表述已过时，这里六集均可免费预览。": "These technical samples demonstrate storyboards, text, narration and playback. They are not live-action films or finished generative films. Audio remains in Mandarin; the English transcript is available below. Older recordings mention paid unlocks or future releases; those references are out of date. All six samples are free here.",
+  "创作台": "Studio",
+  "开始创作": "Start creating",
+  "在创作台展开 →": "Develop in Studio →"
 };
  const key = 'psy-site-language';
  const valid = value => value === 'en' || value === 'zh';
