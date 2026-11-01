@@ -17,3 +17,6 @@ footer{max-width:1320px;padding:34px 32px 50px;margin:auto;border-top:1px solid 
 /* Reserve space for the shared Psyverse bar only while it is visible. */
 html:has(>[id="ψ-bar"]:not(.ψ-hidden)) body{padding-top:32px}
 @media(max-width:640px){html:has(>[id="ψ-bar"]:not(.ψ-hidden)) body{padding-top:30px}}
+
+/* A late-loading shared bar must not anchor the page back over the header. */
+html{overflow-anchor:none}
